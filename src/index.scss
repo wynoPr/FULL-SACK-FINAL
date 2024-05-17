@@ -1,0 +1,151 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+//Font Styles
+
+.f-w {
+  color: #f8f8f8;
+}
+.f-reverse {
+  text-align: left;
+}
+
+.faint {
+  color: #a7b7b1;
+}
+.danger {
+  color: #e32b38;
+}
+
+.link {
+  color: #9ccda1;
+  transition: transform 0.3s;
+  margin: 0 10px;
+}
+.link:hover {
+  color: #68967a;
+  transform: scale(1.1);
+}
+.active {
+  color: #e32b38;
+}
+.icon {
+  height: 36px;
+  font-size: 36px;
+}
+
+// Barra Navegación
+
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+
+// body {
+//   scrollbar-width: none;
+//   -ms-overflow-style: none;
+// }
+
+// .simplebar-scrollbar::before {
+//   background: linear-gradient(
+//     150deg,
+//     rgba(135, 206, 235, 1) 20%,
+//     rgba(70, 130, 180, 1) 100%
+//   ) !important;
+// }
+// .simplebar-track {
+//   border-radius: 10px;
+// }
+// .simplebar-content-wrapper {
+//   height: 70vh;
+//   width: 80vw;
+// }
+
+//Contenedores
+
+body {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root {
+  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// para acciones
+// #master {
+//   width: 100vw;
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-start;
+//   padding-top: 40px;
+//   border-top-left-radius: 20px;
+//   border-top-right-radius: 20px;
+//   position: absolute;
+//   animation: slideUp 1.5s ease forwards;
+//   background-color: #FBF1E9 ;
+//   z-index: 2;
+// }
+
+// @keyframes slideUp {
+//   from {
+//     transform: translateY(100vh);
+//   }
+//   to {
+//     transform: translateY(-40px);
+//   }
+// }
+
+.container {
+  max-width: 410px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav {
+  &_bar {
+    position: fixed;
+  }
+  &_home {
+    position: relative;
+  }
+}
+
+//otros
+
+@mixin atributes($w, $h, $padding, $margin, $bcolor) {
+  width: $w;
+  height: $h;
+  padding: $padding;
+  margin: $margin;
+  background-color: $bcolor;
+}
+
+@mixin flex($direction, $justify, $align, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin grid($colums, $rows, $gap, $dir) {
+  display: grid;
+    grid-template-columns: repeat($colums, $rows);
+    grid-gap: $gap;
+    direction: $dir;
+}
