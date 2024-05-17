@@ -13,6 +13,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
+
           </Routes>
     </BrowserRouter>
     </>

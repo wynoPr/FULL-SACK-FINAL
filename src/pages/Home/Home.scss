@@ -2,22 +2,97 @@
 
 
 .home {
-    width: 100%;
+    position: relative;
+    width: 410px;
+    height: 100vh;
+    @include flex(column, flex-start, center, nowrap);
+    &_logo{
+        @include atributes(60%, auto, 0, 20vh 0 0 0,#9CCDA1 );
+        aspect-ratio: 3/2;
+
+    }
+    &_nav{
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        aspect-ratio: 9/11;
+        // @include grid(13,0px, auto);
+        // grid-template-rows: repeat(13, 1fr);
+        // position: relative;
+        // width: calc((13 / 9) * 100%);
+        // // left: calc((2 / 9) * -100%);
+        // // bottom: calc((2 / 9) * -100vw);
+        // justify-items: center;
+
+
+
+        border: 1px solid;
+    }
 }
 
+.btt1 {
+    position: absolute;
+    left: calc(50% - (2 / 9) * 100% );
+    bottom: 40%;
+}
+.btt2 {
+    position: absolute;
+    right: 5%;
+    bottom: calc( 48% + (2 / 9) * 100% );
+}
+.btt3 {
+    position: absolute;
+    right: 5%;
+    bottom: calc( 50% - (2 / 9) * 100% );
+}
+.btt4 {
+    position: absolute;
+    left: calc(50% - (1 / 9) * 100% );
+    bottom: 14%;
+}
+.btt5 {
+    position: absolute;
+    left: 5%;
+    bottom: calc( 50% - (2 / 9) * 100% );
+}
+.btt6 {
+    position: absolute;
+    right: -10%;
+    bottom: -15%;
+}
+.btt7 {
+    position: absolute;
+    left: -10%;
+    bottom: -15%;
+}
 
-.parent {
-    display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(13, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    .div1 { grid-area: 2 / 11 / 4 / 13; }
-    .div2 { grid-area: 3 / 5 / 7 / 10; }
-    .div3 { grid-area: 6 / 11 / 8 / 13; }
-    .div4 { grid-area: 6 / 2 / 8 / 4; }
-    .div5 { grid-area: 8 / 6 / 10 / 9; }
-    .div6 { grid-area: 9 / 10 / 13 / 13; }
-    .div7 { grid-area: 9 / 2 / 13 / 5; }
+.round_big{
+    width: calc((4 / 9) * 100%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    @include flex(column, center, center, nowrap);
+    outline: 40px solid #FFEBD0;
+}
+.round_smol{
+    width: calc((2 / 9) * 100%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    @include flex(column, center, center, nowrap);
+    outline: 27px solid #FFEBD0;
+}
+.btt-r_round_smol{
+    @extend .btt-r;
+    @extend .round_smol;
+}
+.btt-r_round_big{
+    @extend .btt-r;
+    @extend .round_big;
+}
+.btt_round_smol{
+    @extend .btt;
+    @extend .round_smol;
+}
+.btt_round_big{
+    @extend .btt;
+    @extend .round_big;
+}

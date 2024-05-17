@@ -77,10 +77,11 @@
 //Contenedores
 
 body {
-  background-color: #f8f8f8;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f8f8f8;
 }
 
 #root {
@@ -116,22 +117,22 @@ body {
 //   }
 // }
 
-.container {
-  max-width: 410px;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// .container {
+//   max-width: 410px;
+//   overflow: scroll;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
 
-.nav {
-  &_bar {
-    position: fixed;
-  }
-  &_home {
-    position: relative;
-  }
-}
+// .nav {
+//   &_bar {
+//     position: fixed;
+//   }
+//   &_home {
+//     position: relative;
+//   }
+// }
 
 //otros
 
@@ -141,7 +142,7 @@ body {
 }
 .btt:hover {
   background-color: #68967a;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .btt-r {
   background-color: #E32B38;
@@ -149,7 +150,7 @@ body {
 }
 .btt-r:hover {
   background-color: #BA2022;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 //otros
@@ -170,9 +171,9 @@ body {
   flex-wrap: $wrap;
 }
 
-@mixin grid($colums, $rows, $gap, $dir) {
+@mixin grid($colums, $gap, $dir) {
   display: grid;
-    grid-template-columns: repeat($colums, $rows);
+    grid-template-columns: repeat($colums, 1fr);
     grid-gap: $gap;
     direction: $dir;
 }
