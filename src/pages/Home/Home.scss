@@ -1,0 +1,23 @@
+@import "src/index.scss";
+
+
+.home {
+    width: 100%;
+}
+
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 2 / 11 / 4 / 13; }
+    .div2 { grid-area: 3 / 5 / 7 / 10; }
+    .div3 { grid-area: 6 / 11 / 8 / 13; }
+    .div4 { grid-area: 6 / 2 / 8 / 4; }
+    .div5 { grid-area: 8 / 6 / 10 / 9; }
+    .div6 { grid-area: 9 / 10 / 13 / 13; }
+    .div7 { grid-area: 9 / 2 / 13 / 5; }

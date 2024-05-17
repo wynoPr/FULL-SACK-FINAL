@@ -1,0 +1,20 @@
+@import "src/index.scss";
+
+
+.estilos {
+    width: 100%;
+    @include grid(1,1fr,20px, auto);
+    padding: 20px 0 60px 0 ;
+}
+
+.margins{
+    width: 100%;
+    @include grid(2,1fr,20px, auto);
+    padding-top: 20px;
+}
+
+.colors {
+    width: 100%;
+    @include grid(1,1fr,10px, auto);
+    padding-top: 20px;
+}

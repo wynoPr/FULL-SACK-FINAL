@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Caprasimo";
+  src: url("../src/fonts/Caprasimo-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-BoldAlt.otf") format("OpenType");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-BoldItalicAlt.otf")
+    format("OpenType");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+    font-family: "Neutra_bold";
+  src: url("../src/fonts/NeutraText-BoldAlt.otf") format("OpenType");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-DemiAlt.otf") format("OpenType");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-DemiItalicAlt.otf")
+    format("OpenType");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+    font-family: "Neutra_bold";
+  src: url("../src/fonts/NeutraText-BoldAlt.otf") format("OpenType");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-BookAlt.otf") format("OpenType");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Neutra";
+  src: url("../src/fonts/NeutraText-BookItalic.otf")
+    format("OpenType");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+    font-family: "Neutra_bold";
+  src: url("../src/fonts/NeutraText-DemiAlt.otf") format("OpenType");
+  font-weight: 400;
+}
+
+//format styles
+
+.h1 {
+  font-family: "Caprasimo";
+  font-weight: 400;
+  font-style: normal;
+  font-size: xx-large;
+  color: #2d2a26;
+}
+.h2 {
+  font-family: "Neutra";
+  font-weight: 600;
+  font-size: x-large;
+  color: #2d2a26;
+}
+.h3 {
+  font-family: "Neutra";
+  font-weight: 500;
+  font-size: larger;
+  color: #2d2a26;
+}
+.p {
+  font-family: "Neutra";
+  font-weight: 400;
+  font-size: medium;
+  color: #2d2a26;
+}
+.p-s {
+  font-family: "Neutra";
+  font-weight: 400;
+  font-size: small;
+  color: #2d2a26;
+}
+.span {
+  font-family: "Neutra";
+  font-weight: 500;
+  font-size: medium;
+  color: #2d2a26;
+}
+
+//decoration styles
+
+.it {
+  font-style: italic;
+}
+.bold {
+  font-family: "Neutra_bold";
+}
+
