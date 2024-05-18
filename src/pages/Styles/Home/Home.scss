@@ -1,0 +1,27 @@
+
+
+
+.home{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(156,205,161,1) 1%, rgba(118,170,138,1) 100%);
+    &_nav{
+        position: fixed;
+        bottom: 0px;
+        height: 40px;
+    }
+
+}
+
+.btt_scanner {
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: #68967A;
+    &_img{
+    width: 50%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    overflow: hidden;
+    }
+}
