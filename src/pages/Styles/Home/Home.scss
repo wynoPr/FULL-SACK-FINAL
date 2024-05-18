@@ -14,14 +14,18 @@
 }
 
 .btt_scanner {
+    width: 50%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #68967A;
     position: relative;
     top: 25%;
     left: 25%;
-    background-color: #68967A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &_img{
-    width: 50%;
     aspect-ratio: 1/1;
-    border-radius: 100%;
     overflow: hidden;
     }
 }
