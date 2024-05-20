@@ -69,7 +69,7 @@ export default function Home() {
 
   return (
     <div className='master'>
-      <History></History>
+      <Profile></Profile>
       <section id='home' className='home' ref={masterRef}>
           <h2 className='h2 f-w home_title'>Click to Start</h2>    
           <Link className='btt_scanner' to='/scanner'>
@@ -79,25 +79,25 @@ export default function Home() {
           <div className='blob_c'></div>
           </Link>
           <nav className='home_nav'> 
-              <Link className="link_nav" to='/history'><span className="material-symbols-rounded icon">history</span><span className='span f-w'>History</span></Link>
-              <div>
+            <Link className="link_nav" to='/profile'><span className="material-symbols-rounded icon">for_you</span><span className='span f-w'>Profile</span></Link>
+            <div>
               <NavLink className='navy link'  to='/history'>o</NavLink>
               <NavLink className='navy link'  to='/'>o</NavLink>
               <NavLink className='navy link'  to='/profile'>o</NavLink>
-              </div>
-              <Link className="link_nav" to='/profile'><span className="material-symbols-rounded icon">for_you</span><span className='span f-w'>Profile</span></Link>
+            </div>
+            <Link className="link_nav" to='/history'><span className="material-symbols-rounded icon">history</span><span className='span f-w'>History</span></Link>  
           </nav>
       </section>
-      <Profile></Profile>
+      <History></History>
       {/* moves navigations */}
-      {/* {(path == '/' && detDX == -1) &&
+      {(path == '/' && detDX == 1) &&
           // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
           <Navigate to="/history" />
         }
-      {(path == '/' && detDX == 1) &&
+      {(path == '/' && detDX == -1) &&
           // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
           <Navigate to="/profile" />
-        } */}
+        }
     </div>
   )
 }

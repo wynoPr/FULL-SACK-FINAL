@@ -136,6 +136,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
 }
 .btt:hover{
@@ -159,6 +160,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
   
   color: #9CCDA1;
   &_alt{
@@ -201,6 +203,7 @@ body {
   font-weight: 500;
   font-size: x-large;
   color: #2d2a26;
+  transition: border-color 0.3s ease, color 0.3s ease;
   
 }
 .input:focus{
@@ -225,6 +228,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 0.3s ease, color 0.3s ease;
   
 }
 .tag:hover{
@@ -247,6 +251,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .tag_alt:hover{
   border-color: #68967A;

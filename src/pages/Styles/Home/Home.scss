@@ -3,11 +3,12 @@
 
 
 .home{
+    position: relative;
     min-width: 100vw;
     height: 100vh;
     background: linear-gradient(180deg, rgba(156,205,161,1) 1%, rgba(118,170,138,1) 100%);
     &_nav{
-        position: fixed;
+        position: absolute;
         bottom: 0px;
         width: 100%;
         margin-bottom: 20px;
