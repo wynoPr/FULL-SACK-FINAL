@@ -8,17 +8,20 @@ export default function LoginForm() {
         try {
             const response = await axios.post('http://localhost:3000/auth/login', data);
             console.log('Intento Login successful:', response.data);
+            localStorage.setItem(response.data.token)// Mirar si esto tiene sentido
             // Puedes almacenar el token de autenticación o redirigir al usuario aquí
         } catch (error) {
             console.error('There was an error logging in!', error);
         }
     };
     return (
-        <div>
+        <>
+            <h2 className='h1 danger form_title'>welcome back</h2>
+            <p className='h3'>please enter your details to continue</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <label htmlFor="mail">Email</label>
-                    <input
+                    <label htmlFor="mail"></label>
+                    <input className='input' placeholder='email'
                         id="mail"
                         type="email"
                         {...register('mail', { required: 'Email is required' })}
@@ -26,16 +29,19 @@ export default function LoginForm() {
                     {errors.mail && <span>{errors.mail.message}</span>}
                 </div>
                 <div>
-                    <label htmlFor="pass">Password</label>
-                    <input
+                    <label htmlFor="pass"></label>
+                    <input className='input' placeholder='password'
                         id="pass"
                         type="password"
                         {...register('pass', { required: 'Password is required' })}
                     />
                     {errors.pass && <span>{errors.pass.message}</span>}
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className='btt h3'>Login</button>
             </form>
-        </div>
+            <p className='h3'>New on Hypal?</p>
+            <button>Sign in</button>
+
+        </>
     )
 }
