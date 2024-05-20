@@ -9,54 +9,27 @@ export default function multiStepForm() {
 
 
     const methods = useForm({
+
         defaultValues: {
-            "name": "",
-            "mail": "",
-            "pass": "",
+            "name": "rick",
+            "mail": "j.ramos23232@gmail.com",
+            "pass": "1234",
             "allergyId": [],
-            "telf": "",
-            "emerName": "",
-            "emerTelf": "",
-            "emerEmail": "",
+            "telf": "999999999",
+            "emerName": "j",
+            "emerTelf": "555555555",
+            "emerEmail": "dwkd@gmail.com",
             "history": [],
             "img": "",
             "role": "user"
         }
     })
-    // });
 
     const [step, setStep] = useState(0);
+    const [imagePreview, setImagePreview] = useState()
 
     const nextStep = () => setStep(step + 1);
     const prevStep = () => setStep(step - 1);
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({ ...formData, [name]: value });
-    // };
-
-
-
-
-
-    //--------------------------------------------------
-    //Revisar funcionamiento, Funcion escrita por CHATGPT
-    //--------------------------------------------------
-    // const handleFileChange = async (e) => {
-    //     const file = e.target.files[0];
-    //     const formData = new FormData();
-    //     formData.append('file', file);
-    //     formData.append('upload_preset', 'your_upload_preset'); // Reemplaza 'your_upload_preset' con tu propio preset de Cloudinary
-
-    //     try {
-    //         const res = await axios.post('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', formData);
-    //         setFormData({ ...formData, img: res.data.secure_url });
-    //     } catch (error) {
-    //         console.error('Error uploading the image', error);
-    //     }
-    // };
-
-
 
 
     const onSubmit = async (data) => {
@@ -70,11 +43,31 @@ export default function multiStepForm() {
     };
 
 
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => {
+    //             setImagePreview(reader.result);
+    //             methods.setValue('img', reader.result);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         setImagePreview();
+    //     }
+    // };
+
+    const loadFile = function (event) {
+        const output = document.getElementById('output');
+        setImagePreview(URL.createObjectURL(event.target.files[0]));
+
+    };
+
 
     const renderStep = () => {
         switch (step) {
             case 0:
-                return <PersonalInfoSec />;
+                return <PersonalInfoSec loadFile={loadFile} imagePreview={imagePreview} />;
             case 1:
                 return <EmerInfoSec />;
             case 2:
@@ -82,7 +75,7 @@ export default function multiStepForm() {
             // case 3:
             //   return <Review {...methods} />;
             default:
-                return <PersonalInfoSec />;
+                return <PersonalInfoSec loadFile={loadFile} imagePreview={imagePreview} />;
         }
     };
     return (
