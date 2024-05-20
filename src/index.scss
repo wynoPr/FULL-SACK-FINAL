@@ -7,52 +7,6 @@
   text-decoration: none;
 }
 
-//Font Styles
-
-.f-w {
-  color: #f8f8f8;
-}
-.f-reverse {
-  text-align: left;
-}
-
-.faint {
-  color: #a7b7b1;
-}
-.danger {
-  color: #e32b38;
-}
-.danger:hover {
-  color: #BA2022;
-}
-.danger:active {
-  color: #BA2022;
-}
-
-.link {
-  color: #9ccda1;
-  transition: transform 0.3s;
-  margin: 0 10px;
-}
-.link:hover {
-  color: #68967a;
-  transform: scale(1.1);
-}
-.active {
-  color: #e32b38;
-}
-.icon {
-  height: 28px;
-  font-size: 28px;
-  margin: 5px;
-  &_btt{
-    @extend .icon;
-    height: auto;
-    font-size: 24px;
-    margin: 0px 5px;
-  }
-}
-
 // Barra Navegación
 
 ::-webkit-scrollbar {
@@ -92,15 +46,18 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  
+  background: linear-gradient(180deg, rgba(252,245,234,1) 0%, rgba(255,235,208,1) 80%, rgba(255,235,208,1) 100%);
 }
 
 // para acciones
 .master {
   width: 100vw;
+  height: 100vh;
   overflow: scroll;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   // padding-top: 40px;
   // border-top-left-radius: 20px;
@@ -137,10 +94,23 @@ body {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, color 0.3s ease;
-
+  &_danger{
+    @extend .btt;
+    background-color: #BA2022;
+    color: #f8f8f8;
+  }
+  &_danger{
+    @extend .btt;
+    background-color: #E32B38;
+    color: #f8f8f8;
+  }
 }
 .btt:hover{
   background-color: #68967A;
+  
+}
+.btt_danger:hover{
+  background-color: #BA2022;
   
 }
 .btt:active{
@@ -221,6 +191,7 @@ body {
 
 .tag{
   padding: 5px 15px;
+  margin: 5px;
   border-radius: 40px;
   background: #9CCDA1;
   border: 3px solid #9CCDA1;
@@ -229,15 +200,17 @@ body {
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease, color 0.3s ease;
+  &_active{
+    @extend .tag;
+    background: #68967A;
+    border-color: #68967A;
+  }
+  &_danger{
+    @extend .tag;
+    background: #BA2022;
+    border-color: #BA2022;
+  }
   
-}
-.tag:hover{
-  background: #68967A;
-  border-color: #68967A;
-}
-.tag:active{
-  background: #68967A;
-  border-color: #68967A;
 }
 .tag:disabled{
   background: #DDE0DF;
@@ -245,6 +218,7 @@ body {
 }
 .tag_alt{
   padding: 5px 15px;
+  margin: 5px;
   border-radius: 40px;
   background: none;
   border: 3px solid #9CCDA1;
@@ -252,11 +226,12 @@ body {
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease, color 0.3s ease;
+  &_danger{
+    @extend .tag_alt;
+    border-color: #BA2022;
+  }
 }
-.tag_alt:hover{
-  border-color: #68967A;
-}
-.tag_alt:active{
+.tag_alt_active{
   background-color: #68967A;
   border-color: #68967A;
   color: #f8f8f8;
@@ -265,3 +240,105 @@ body {
   border-color: #DDE0DF;
   color: #DDE0DF;
 }
+
+//img
+
+.img{
+  width: 40vw;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin: 20px;
+  &_s{
+      @extend .img;
+      width: 20vw;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      margin: 20px;
+  }
+}
+.img-r{
+  width: 40vw;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin: 20px;
+  &_s{
+      @extend .img;
+      width: 20vw;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      margin: 20px;
+  }
+}
+.valid{
+  outline: 10px solid #9CCDA1;
+}
+.nd{
+  outline: 10px solid #DDE0DF;
+}
+.invalid{
+  outline: 10px solid #E32B38;
+}
+
+//other
+
+.mg-b-40{
+  margin-bottom: 40px;
+}
+.mg-b-20{
+  margin-bottom: 20px;
+}
+.mg-b-10{
+  margin-bottom: 10px;
+}
+
+.of-n{
+  overflow-y: hidden;
+  height: 100%;
+}
+
+//Styles
+
+.f-w {
+  color: #f8f8f8;
+}
+.f-reverse {
+  text-align: left;
+}
+
+.faint {
+  color: #a7b7b1;
+}
+.danger {
+  color: #e32b38;
+}
+.danger:hover {
+  color: #BA2022;
+}
+.danger:active {
+  color: #BA2022;
+}
+
+.link {
+  color: #9ccda1;
+  transition: transform 0.3s;
+  margin: 10px;
+}
+.link:hover {
+  color: #68967a;
+  transform: scale(1.1);
+}
+.active {
+  color: #e32b38;
+}
+.icon {
+  height: 28px;
+  font-size: 28px;
+  margin: 5px;
+  &_btt{
+    @extend .icon;
+    height: auto;
+    font-size: 24px;
+    margin: 0px 5px;
+  }
+}
+
