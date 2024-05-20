@@ -1,39 +1,36 @@
 import React from 'react'
-
-export default function personalInfoSec({ formData, handleChange, handleFileChange }) {
+import { useFormContext } from 'react-hook-form';
+export default function personalInfoSec() {
+    const { register, formState: { errors } } = useFormContext();
 
     return (
         <>
             <h2>Who are you?</h2>
-            <input
-                type="file"
-                name="img"
-                onChange={handleFileChange}
-            />
-            <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="email"
-                name="mail"
-                placeholder="Email"
-                value={formData.mail}
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="pass"
-                placeholder="Password"
-                value={formData.pass}
-                onChange={handleChange}
-                required
-            />
+
+            <label>
+                Upload Profile Picture:
+                <input type="file" {...register('img')} />
+            </label>
+            <br />
+            <label>
+                Name:
+                <input type="text" {...register('name', { required: 'Name is required' })} />
+                {errors.name && <span>{errors.name.message}</span>}
+            </label>
+            <br />
+
+            <label>
+                Email:
+                <input type="email" {...register('mail', { required: 'Email is required' })} />
+                {errors.mail && <span>{errors.mail.message}</span>}
+            </label>
+            <br />
+
+            <label>
+                Password:
+                <input type="password" {...register('pass', { required: 'Password is required' })} />
+                {errors.pass && <span>{errors.pass.message}</span>}
+            </label>
         </>
     )
-}
+};
