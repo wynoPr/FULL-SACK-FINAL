@@ -4,7 +4,7 @@ import './Estilos.scss'
 
 export default function Estilos() {
   return (
-    <div className='estilos'>
+    <div className='estilos container'>
         <h1 className='h1'>H1: Jovencillo emponzoñado de whisky, ¡qué figurota exhibe!</h1>
         <h2 className='h2'>H2: Jovencillo emponzoñado de whisky, ¡qué figurota exhibe!</h2>
         <h2 className='h2 it'>H2 italic: Jovencillo emponzoñado de whisky, ¡qué figurota exhibe!</h2>
@@ -41,6 +41,22 @@ export default function Estilos() {
             <div className='h2' style={{ height: '30px', width: '100%', backgroundColor: '#F8F8F8', paddingLeft: '10px' }}>#F8F8F8</div>
             <div className='h2' style={{ height: '30px', width: '100%', backgroundColor: '#FCF5EA', paddingLeft: '10px' }}>#FCF5EA</div>
             <div className='h2' style={{ height: '30px', width: '100%', backgroundColor: '#FFEBD0', paddingLeft: '10px' }}>#FFEBD0</div>
+        </div>
+        <div className='buttons'>
+          <h2 className='h2'>Inputs:</h2><h2></h2>
+          <p className='p'>Button</p><button className='btt h2'>Click Me</button>
+          <p className='p'>Button icon</p><button className='btt h2'><span className="material-symbols-rounded icon_btt">history</span>Click Me</button>
+          <p className='p'>Button Txt</p><button className='btt_txt h2'>Click Me</button>
+          <p className='p'>Button Txt icon</p><button className='btt_txt_smol h3'>Click Me<span className="material-symbols-rounded icon_btt">history</span></button>
+          <p className='p'>Button Txt Alt</p><button className='btt_txt_alt h3'>Click Me</button>
+          <p className='p'>Button Txt Alt icon</p><button className='btt_txt_alt h3'>Click Me<span className="material-symbols-rounded icon_btt">history</span></button>
+          <p className='p'>Input txt</p><input type='text' className='input' id='searchbar' placeholder='Search by Name' />
+          <p className='p'>Input txt</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minlength="8" />
+          <p className='p'>Input txt disabled</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minlength="8" disabled/>
+          <p className='p'>Tag</p><button className='tag span'>Tag</button>
+          <p className='p'>Tag Disabled</p><button className='tag span' disabled >Tag</button>
+          <p className='p'>Tag alt</p><button className='tag_alt span'>Tag</button>
+          <p className='p'>Tag alt Disabled</p><button className='tag_alt span' disabled >Tag</button>
         </div>
     </div>
   )

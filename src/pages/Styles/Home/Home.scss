@@ -1,31 +1,127 @@
 
 
 
+
 .home{
-    width: 100%;
-    height: 100%;
+    min-width: 100vw;
+    height: 100vh;
     background: linear-gradient(180deg, rgba(156,205,161,1) 1%, rgba(118,170,138,1) 100%);
     &_nav{
         position: fixed;
         bottom: 0px;
-        height: 40px;
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
     }
 
 }
+.link_nav {
+    color: #f8f8f8;
+    margin: 0 10px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+  }
+  .link_nav:active {
+    background-color: #bddac053 ;
+    border-radius: 5px;
+  }
+
+  .home_title{
+    position: relative;
+    top: 20%;
+    text-align: center;
+  }
 
 .btt_scanner {
     width: 50%;
-    aspect-ratio: 1/1;
     border-radius: 50%;
-    background-color: #68967A;
+    aspect-ratio: 1/1;
+    background-color: #BDDAC0;
     position: relative;
     top: 25%;
     left: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
+    
     &_img{
+        width: 90%;
+        aspect-ratio: 1/1;
+        position: relative;
+        border: 1px solid black;
+        overflow: hidden;
+        border-radius: 50%;
+        z-index: 3;
+        
+    }
+}
+.btt_scanner:active{
+    transform: scale(1.05);
+    
+    animation: blob 20s infinite;
+    animation-timing-function: linear;
+}
+.btt_scanner:active .btt_scanner_img{
+    
+    background-color: #68967a;
+}
+
+
+.blob {
+    display: none;
+    position: absolute;
+    width: 100%;
     aspect-ratio: 1/1;
-    overflow: hidden;
+    
+    &_a{
+        @extend .blob;
+        background-color: #f8f8f8;
+        transform: rotate(30deg);
+        
+    animation: blob 10s infinite;
+    animation-timing-function: linear;
+    }
+    &_b{
+        @extend .blob;
+        background-color: #4F6F63;
+        transform: rotate(150deg);
+        
+    animation: blob 15s infinite;
+    animation-timing-function: linear;
+    }
+    &_c{
+        @extend .blob;
+        background-color: #68967a;
+        transform: rotate(270deg);
+        
+    animation: blob 20s infinite;
+    animation-timing-function: linear;
+    }
+}
+.btt_scanner:active .blob{
+    display: block;
+}
+@keyframes blob {
+    0% {
+        border-radius: 54% 46% 60% 40% / 53% 46% 54% 47%;
+    }
+    25% {
+        border-radius: 44% 56% 62% 38% / 70% 39% 61% 30%;
+    }
+    50% {
+        border-radius: 74% 26% 54% 46% / 38% 49% 51% 62% ;
+    }
+    75% {
+        border-radius: 67% 33% 33% 67% / 69% 25% 75% 31% ;
+    }
+    100% {
+        border-radius: 54% 46% 60% 40% / 53% 46% 54% 47%;
     }
 }
