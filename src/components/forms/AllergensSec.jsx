@@ -12,12 +12,7 @@ export default function allergensSec() {
 
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-    const [selectedAllergens, setSelectedAllergens] = useState([]);
 
-    //---------------------------------------------------
-    //  crear metodo para filtrar allergens desde back que filtre por nombre y que no tenga en cuenta ni mayusculas etc(mirar como hacer si es posible que sea buscador predictivo)
-    //  Cambiar path del metodo en linea 21 por el nuevo metodo que creemos.
-    //---------------------------------------------------
 
 
     useEffect(() => {
@@ -46,20 +41,7 @@ export default function allergensSec() {
         setQuery('');
         setSuggestions([]);
     };
-    // const handleSuggestionClick = (suggestion) => {
 
-    //     // const isAlreadySelected = selectedAllergens.some((allergen) => allergen._id === suggestion._id);
-    //     // if (isAlreadySelected) {
-    //     //     return;
-    //     // }
-
-    //     // Agregamos el alérgeno seleccionado al estado de alérgenos seleccionados
-    //     setSelectedAllergens([...selectedAllergens, suggestion]);
-
-    //     // Agregamos el ObjectID del alérgeno al campo allergyId utilizando setValue de react-hook-form
-    //     const currentAllergies = getValues('allergyId');
-    //     setValue('allergyId', [...currentAllergies, suggestion._id]);
-    // }
     return (
         <>
             <h2>Select Allergens</h2>
@@ -76,7 +58,6 @@ export default function allergensSec() {
                     </li>
                 ))}
             </ul>
-            {/* <p>{selectedAllergens[0]}</p> */}
             {
                 selectedAllergens.map((allergen, id) => (
                     <span key={id}><p>{allergen}</p></span>
