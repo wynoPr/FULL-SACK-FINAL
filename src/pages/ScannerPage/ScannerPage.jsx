@@ -24,7 +24,7 @@ export default function ScannerPage({ scannedItem }) {
     <Scanner
       onScan={compareProduct}
       //5 res.data is sent to ItemPage as scannedItem
-      scannedItem={scannedItem}
+      // scannedItem={scannedItem}
     />
   );
 }

@@ -2,7 +2,7 @@ import React, { Profiler, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import "./Home.scss";
 import Profile from "../Profile/Profile";
-import History from "../History/History";
+import History from "../Styles/History/History";
 
 export default function Home() {
   const path = window.location.pathname;
@@ -103,7 +103,7 @@ export default function Home() {
           </Link>
         </nav>
       </section>
-      {/* <History></History> */}
+      <History></History>
       {/* moves navigations */}
       {path == "/" && detDX == 1 && (
         // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
