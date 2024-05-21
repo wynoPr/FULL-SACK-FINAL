@@ -8,7 +8,7 @@ import History from './pages/History/History'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-
+import EditProfile from './components/EditProfile/EditProfile'
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/history" element={<PrivateRoute><div className='master'><History /></div></PrivateRoute>} />
           <Route path="/profile" element={<PrivateRoute><div className='master'><Profile /></div></PrivateRoute>} />
-
+          <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
           <Route path="/styles" element={<Estilos />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useFormContext } from 'react-hook-form';
-export default function personalInfoSec({ loadFile, imagePreview }) {
+export default function PersonalInfoSec({ loadFile, imagePreview }) {
     const { register, formState: { errors } } = useFormContext();
 
     const [showPassword, setShowPassword] = useState(false)

@@ -8,7 +8,7 @@ import AllergenSec from './AllergensSec';
 import RegisterReview from './RegisterReview';
 import { FormProvider, useForm } from 'react-hook-form';
 
-export default function multiStepForm() {
+export default function MultiStepForm() {
 
 
     const methods = useForm({
