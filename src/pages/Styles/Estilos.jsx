@@ -58,6 +58,14 @@ export default function Estilos() {
           <p className='p'>Tag alt</p><button className='tag_alt span'>Tag</button>
           <p className='p'>Tag alt Disabled</p><button className='tag_alt span' disabled >Tag</button>
         </div>
+        <div className='buttons'>
+          <h2 className='h2'>Img:</h2><h2></h2>
+          <p className='p'>Tag valid</p><img src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' className='img valid' alt=''/>
+          <p className='p'>Img not data</p><img src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' className='img nd' alt=''/>
+          <p className='p'>Img invalid</p><img src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' className='img invalid' alt=''/>
+          <p className='p'>Img Smol</p><img src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' className='img_s valid' alt=''/>
+        </div>
+
     </div>
   )
 }
