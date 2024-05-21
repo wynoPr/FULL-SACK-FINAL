@@ -1,12 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Profile.scss'
 import Home from '../Home/Home';
 import History from '../History/History';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { GlobalContext } from '../../App';
 
 export default function Profile() {
 
-    const path = window.location.pathname;
+  const { lastP, setLastP } = useContext(GlobalContext)
+ 
+  const path = useLocation().pathname;
+
+  //stablish last page viewed
+  useEffect(() => {
+  
+    if (path === '/profile') {
+      return () => {
+        setLastP(path);
+      }
+    }
+  }, [])
+  //
 
     useEffect(() => {
       const element = document.getElementById('profile');

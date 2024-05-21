@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Estilos from './pages/Styles/Estilos'
 
@@ -9,7 +9,7 @@ import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EmerContact from './pages/EmerContact/EmerContact'
-import Estilos from "./pages/Styles/Estilos";
+import Loading from './components/Loading/Loading'
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 
@@ -22,11 +22,13 @@ function App() {
 
   const [count, setCount] = useState(0)
 
-
-  const path = window.location.pathname;
-  console.log(path);
-
   const [lastP, setLastP] = useState();
+
+  useEffect(() => {
+    console.log(lastP);
+  
+  }, [lastP])
+  
 
   return (
     <>
@@ -35,7 +37,7 @@ function App() {
 
         <Routes>
 
-            <Route path="/" element={<div className='master of-n'><Home /></div>} />
+            <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/history" element={<div className='master'><History/></div>} />

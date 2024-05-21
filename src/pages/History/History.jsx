@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './History.scss'
 import Home from '../Home/Home';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import HistoryCard from '../../components/HistoryCard/HistoryCard';
+import { GlobalContext } from '../../App';
+import Profile from '../Profile/Profile';
 
 export default function History() {
 
-  const path = window.location.pathname;
+  const { lastP, setLastP } = useContext(GlobalContext)
+ 
+  const path = useLocation().pathname;
+
+  //stablish last page viewed
+  useEffect(() => {
+  
+    if (path === '/history') {
+      return () => {
+        setLastP(path);
+      }
+    }
+  }, [])
+  //
 
   useEffect(() => {
     const element = document.getElementById('history');
