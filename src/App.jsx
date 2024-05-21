@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Estilos from './pages/Styles/Estilos'
 
@@ -9,32 +9,47 @@ import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EditProfile from './components/EditProfile/EditProfile'
+import EmerContact from './pages/EmerContact/EmerContact'
+import Loading from './components/Loading/Loading'
+import ScannerPage from "./pages/ScannerPage/ScannerPage";
+import ItemPage from "./pages/Item/ItemPage";
+
+export const GlobalContext = React.createContext();
 
 function App() {
 
   const [count, setCount] = useState(0)
 
-  const path = window.location.pathname;
-  console.log(path);
+  const [lastP, setLastP] = useState();
+
+  useEffect(() => {
+    console.log(lastP);
+  
+  }, [lastP])
+  
 
   return (
     <>
-      <BrowserRouter>
-
+      <GlobalContext.Provider value={{ lastP, setLastP }}>
+        <BrowserRouter>
         <Routes>
-
-          <Route path="/" element={<PrivateRoute><div className='master of-n'><Home /></div></PrivateRoute>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/history" element={<PrivateRoute><div className='master'><History /></div></PrivateRoute>} />
-          <Route path="/profile" element={<PrivateRoute><div className='master'><Profile /></div></PrivateRoute>} />
-          <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
-          <Route path="/styles" element={<Estilos />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/history" element={<div className='master'><History/></div>} />
+            <Route path="/profile" element={<div className='master'><Profile /></div>} />
+            <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
+            <Route path="/emergency-contact" element={<EmerContact />} />
+            <Route path="/scanner" element={<ScannerPage />} />
+            <Route path="/item/:id" element={<ItemPage />} />
+            
+            <Route path="/styles" element={<Estilos />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+      </GlobalContext.Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
