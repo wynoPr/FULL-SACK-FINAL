@@ -46,8 +46,13 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  
-  background: linear-gradient(180deg, rgba(252,245,234,1) 0%, rgba(255,235,208,1) 80%, rgba(255,235,208,1) 100%);
+
+  background: linear-gradient(
+    180deg,
+    rgba(252, 245, 234, 1) 0%,
+    rgba(255, 235, 208, 1) 80%,
+    rgba(255, 235, 208, 1) 100%
+  );
 }
 
 // para acciones
@@ -86,43 +91,41 @@ body {
 
 //inputs
 
-.btt{
-  background-color: #9CCDA1;
+.btt {
+  background-color: #9ccda1;
   padding: 10px 40px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, color 0.3s ease;
-  &_danger{
+  &_danger {
     @extend .btt;
-    background-color: #BA2022;
+    background-color: #ba2022;
     color: #f8f8f8;
   }
-  &_danger{
+  &_danger {
     @extend .btt;
-    background-color: #E32B38;
+    background-color: #e32b38;
     color: #f8f8f8;
   }
 }
-.btt:hover{
-  background-color: #68967A;
-  
+.btt:hover {
+  background-color: #68967a;
 }
-.btt_danger:hover{
-  background-color: #BA2022;
-  
+.btt_danger:hover {
+  background-color: #ba2022;
 }
-.btt:active{
-  background-color: #BA2022;
+.btt:active {
+  background-color: #ba2022;
   color: #f8f8f8;
 }
-.btt:disabled{
-  background-color: #DDE0DF;
+.btt:disabled {
+  background-color: #dde0df;
   color: #f8f8f8;
 }
 
-.btt_txt{
+.btt_txt {
   background-color: #9ccda100;
   padding: 10px 20px 0 20px;
   margin-bottom: 10px;
@@ -131,40 +134,44 @@ body {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, color 0.3s ease;
-  
-  color: #9CCDA1;
-  &_alt{
+  color: #9ccda1;
+
+  &_alt {
     @extend .btt_txt;
     padding: 10px 20px 0 20px;
-    border-bottom: solid #9CCDA1;
+    border-bottom: solid #9ccda1;
     border-width: 3px;
-
   }
-  color: #9CCDA1;
-  &_smol{
+  &_smol {
     @extend .btt_txt;
     padding: 5px 10px 0 10px;
-
+    &_w {
+      @extend .btt_txt_smol;
+      color: #fcf5ea;
+    }
   }
 }
-.btt_txt:hover{
-  border-color: #68967A;
-  color: #68967A;
+.btt_txt:hover {
+  border-color: #68967a;
+  color: #68967a;
 }
-.btt_txt:active{
-  border-color: #BA2022;
-  color: #BA2022;
+.btt_txt_smol_w:hover {
+  color: #ffebd0;
 }
-.btt_txt:disabled{
-  border-color: #DDE0DF;
-  color: #DDE0DF;
+.btt_txt:active {
+  border-color: #ba2022;
+  color: #ba2022;
+}
+.btt_txt:disabled {
+  border-color: #dde0df;
+  color: #dde0df;
 }
 
-.input{
+.input {
   background-color: #f8f8f8;
   padding: 5px 15px;
   border-radius: 10px;
-  border-bottom: 5px solid #9CCDA1;
+  border-bottom: 5px solid #9ccda1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -174,124 +181,122 @@ body {
   font-size: x-large;
   color: #2d2a26;
   transition: border-color 0.3s ease, color 0.3s ease;
-  
 }
-.input:focus{
+.input:focus {
   color: #2d2a26;
-  border-color: #68967A;
+  border-color: #68967a;
 }
-.input:disabled{
-  color: #DDE0DF;
-  border-color: #DDE0DF;
+.input:disabled {
+  color: #dde0df;
+  border-color: #dde0df;
 }
-.input:invalid{
+.input:invalid {
   color: #2d2a26;
-  border-color: #BA2022;
+  border-color: #ba2022;
 }
 
-.tag{
+.tag {
   padding: 5px 15px;
   margin: 5px;
   border-radius: 40px;
-  background: #9CCDA1;
-  border: 3px solid #9CCDA1;
+  background: #9ccda1;
+  border: 3px solid #9ccda1;
   color: #f8f8f8;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease, color 0.3s ease;
-  &_active{
+  &_active {
     @extend .tag;
-    background: #68967A;
-    border-color: #68967A;
+    background: #68967a;
+    border-color: #68967a;
   }
-  &_danger{
+  &_danger {
     @extend .tag;
-    background: #BA2022;
-    border-color: #BA2022;
+    background: #ba2022;
+    border-color: #ba2022;
   }
-  
 }
-.tag:disabled{
-  background: #DDE0DF;
-  border-color: #DDE0DF;
+.tag:disabled {
+  background: #dde0df;
+  border-color: #dde0df;
 }
-.tag_alt{
+.tag_alt {
   padding: 5px 15px;
   margin: 5px;
   border-radius: 40px;
   background: none;
-  border: 3px solid #9CCDA1;
+  border: 3px solid #9ccda1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease, color 0.3s ease;
-  &_danger{
+  &_danger {
     @extend .tag_alt;
-    border-color: #BA2022;
+    border-color: #ba2022;
   }
 }
-.tag_alt_active{
-  background-color: #68967A;
-  border-color: #68967A;
+.tag_alt_active {
+  background-color: #68967a;
+  border-color: #68967a;
   color: #f8f8f8;
 }
-.tag_alt:disabled{
-  border-color: #DDE0DF;
-  color: #DDE0DF;
+.tag_alt:disabled {
+  border-color: #dde0df;
+  color: #dde0df;
 }
 
 //img
 
-.img{
+.img {
   width: 40vw;
   aspect-ratio: 1/1;
   border-radius: 10px;
   margin: 20px;
-  &_s{
-      @extend .img;
-      width: 20vw;
-      aspect-ratio: 1/1;
-      border-radius: 10px;
-      margin: 20px;
+  &_s {
+    @extend .img;
+    width: 20vw;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    margin: 20px;
   }
 }
-.img-r{
+.img-r {
   width: 40vw;
   aspect-ratio: 1/1;
   border-radius: 50%;
   margin: 20px;
-  &_s{
-      @extend .img;
-      width: 20vw;
-      aspect-ratio: 1/1;
-      border-radius: 10px;
-      margin: 20px;
+  &_s {
+    @extend .img;
+    width: 20vw;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    margin: 20px;
   }
 }
-.valid{
-  outline: 10px solid #9CCDA1;
+.valid {
+  outline: 10px solid #9ccda1;
 }
-.nd{
-  outline: 10px solid #DDE0DF;
+.nd {
+  outline: 10px solid #dde0df;
 }
-.invalid{
-  outline: 10px solid #E32B38;
+.invalid {
+  outline: 10px solid #e32b38;
 }
 
 //other
 
-.mg-b-40{
+.mg-b-40 {
   margin-bottom: 40px;
 }
-.mg-b-20{
+.mg-b-20 {
   margin-bottom: 20px;
 }
-.mg-b-10{
+.mg-b-10 {
   margin-bottom: 10px;
 }
 
-.of-n{
+.of-n {
   overflow-y: hidden;
   height: 100%;
 }
@@ -312,19 +317,27 @@ body {
   color: #e32b38;
 }
 .danger:hover {
-  color: #BA2022;
+  color: #ba2022;
 }
 .danger:active {
-  color: #BA2022;
+  color: #ba2022;
 }
 
 .link {
   color: #9ccda1;
   transition: transform 0.3s;
   margin: 10px;
+  &_w {
+    @extend .link;
+    color: #fcf5ea;
+  }
 }
 .link:hover {
   color: #68967a;
+  transform: scale(1.1);
+}
+.link_w:hover {
+  color: #ffebd0;
   transform: scale(1.1);
 }
 .active {
@@ -334,11 +347,10 @@ body {
   height: 28px;
   font-size: 28px;
   margin: 5px;
-  &_btt{
+  &_btt {
     @extend .icon;
     height: auto;
     font-size: 24px;
     margin: 0px 5px;
   }
 }
-

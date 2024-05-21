@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Scanner } from "../../components/Scanner/Scanner";
 import axios from "axios";
+import Header from "../../components/Header/Header";
+import "./ScannerPage.scss";
 const database = "http://localhost:3000/foods/code/";
 //4 res.data is a prop sent to Item page
-export default function ScannerPage({ scannedItem }) {
+export default function ScannerPage() {
+  const [scannedCode, setScannedCode] = useState(null);
   //2 to compare the barcode, we need to make a petition to the product from the database
   const compareProduct = async (code) => {
     try {
       //3 we make a get request to the database with the code that the quagga scanner detected
       const res = await axios.get(`http://localhost:3000/foods/code/${code}`);
-      console.log(res.data.food);
       //we access to the data.food so its more handy
-      const scannedItem = res.data.food;
+      setScannedCode(code);
+      // console.log(scannedItem);
 
       // const data = res.data();
       // console.log(code);
@@ -21,10 +24,24 @@ export default function ScannerPage({ scannedItem }) {
   };
   //1 when the father receives the barcode as a prop, it calls the compareProduct function
   return (
-    <Scanner
-      onScan={compareProduct}
-      //5 res.data is sent to ItemPage as scannedItem
-      // scannedItem={scannedItem}
-    />
+    <>
+      <section className=" scanner">
+        <Header />
+        <p className="h1 danger history_head mg-b-20">
+          Center the code you want to scan in the box below:
+        </p>
+        <Scanner
+          onScan={compareProduct}
+          scannedCode={scannedCode}
+
+          //5 res.data is sent to ItemPage as scannedItem
+        />
+        <div className="waiting">
+          <div className="waiting_dot_a"></div>
+          <div className="waiting_dot_b"></div>
+          <div className="waiting_dot_c"></div>
+        </div>
+      </section>
+    </>
   );
 }

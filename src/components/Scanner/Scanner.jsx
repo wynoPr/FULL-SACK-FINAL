@@ -1,9 +1,16 @@
 import Quagga from "quagga";
 import { useEffect } from "react";
 import "./Scanner.scss";
+import { useNavigate } from "react-router-dom";
 
 //4last but not least (cuz its the last thing to do): onScan is a prop sent to the father
-export function Scanner({ onScan }) {
+export function Scanner({ onScan, scannedCode }) {
+  const navigate = useNavigate();
+
+  if (scannedCode !== null) {
+    navigate(`/item/${scannedCode}`);
+  }
+
   useEffect(() => {
     const initBarcode = () => {
       Quagga.init(
@@ -38,8 +45,9 @@ export function Scanner({ onScan }) {
       //2 onScan is a prop that holds the code of the barcode
       onScan(code.codeResult.code);
       Quagga.stop();
+      localStorage.setItem("lastItem", onScan(code.codeResult.code));
+      // console.log(code);
     });
-
     //3 initialize the barcode scanner
     initBarcode();
   }, []);
