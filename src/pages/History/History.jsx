@@ -35,7 +35,7 @@ useEffect(() => {
     // console.log('Touch end:', currentX);
 
     if ((currentX - startX) > dMin && currentX != 0) {
-      console.log(-1);
+      // console.log(-1);
       document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
       setTimeout(() => {
         setDetDX(-1);

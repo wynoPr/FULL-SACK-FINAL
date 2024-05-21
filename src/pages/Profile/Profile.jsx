@@ -35,14 +35,14 @@ export default function Profile() {
       // console.log('Touch end:', currentX);
 
       if ((currentX - startX ) < dMin && currentX != 0) {
-        console.log(1);
+        // console.log(1);
         document.querySelector(".master").scrollTo({ left: viewportWidth, behavior: 'smooth' });
         setTimeout(() => {
           setDetDX(1);
         }, 300); 
       } else {
         setDetDX(0);
-        console.log(0);
+        // console.log(0);
         // console.log( document.querySelector(".master"));
         document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
       }

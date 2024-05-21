@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Estilos from './pages/Styles/Estilos'
 
@@ -8,6 +8,11 @@ import History from './pages/History/History'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import EmerContact from './pages/EmerContact/EmerContact'
+
+export const GlobalContext = React.createContext();
+
+
 
 
 function App() {
@@ -17,22 +22,26 @@ function App() {
   const path = window.location.pathname;
   console.log(path);
 
+  const [lastP, setLastP] = useState();
+
   return (
     <>
-      <BrowserRouter>
+      <GlobalContext.Provider value={{ lastP, setLastP }}>
+        <BrowserRouter>
 
         <Routes>
+            <Route path="/" element={<div className='master of-n'><Home /></div>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/history" element={<div className='master'><History/></div>} />
+            <Route path="/profile" element={<div className='master'><Profile /></div>} />
+            <Route path="/emergency-contact" element={<EmerContact />} />
 
-          <Route path="/" element={<PrivateRoute><div className='master of-n'><Home /></div></PrivateRoute>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/history" element={<PrivateRoute><div className='master'><History /></div></PrivateRoute>} />
-          <Route path="/profile" element={<PrivateRoute><div className='master'><Profile /></div></PrivateRoute>} />
-
-          <Route path="/styles" element={<Estilos />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/styles" element={<Estilos />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+      </GlobalContext.Provider> 
     </>
   )
 }
