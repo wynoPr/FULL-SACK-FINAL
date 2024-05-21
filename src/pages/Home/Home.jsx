@@ -3,7 +3,7 @@ import { Link, NavLink, Navigate } from 'react-router-dom'
 import './Home.scss'
 import History from '../History/History';
 import Profile from '../Profile/Profile';
-import SOSButton from '../../components/NavHome/SOSbutton';
+import SOSButton from '../../components/SOSbutton/SOSbutton';
 
 
 export default function Home() {
@@ -52,20 +52,20 @@ export default function Home() {
       // console.log('Touch end:', currentX);
 
       if ((currentX - startX) > dMin && currentX != 0) {
-        console.log(-1);
+        // console.log(-1);
         document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
         setTimeout(() => {
           setDetDX(-1);
         }, 300); 
       } else if ((currentX - startX) < -dMin && currentX != 0) {
-        console.log(1);
+        // console.log(1);
         document.querySelector(".master").scrollTo({ left: (viewportWidth * 2) , behavior: 'smooth' });
         setTimeout(() => {
           setDetDX(1);
         }, 300);
       } else {
         setDetDX(0);
-        console.log(0);
+        // console.log(0);
         // console.log( document.querySelector(".master"));
         document.querySelector(".master").scrollTo({ left: viewportWidth, behavior: 'smooth' });
       }
