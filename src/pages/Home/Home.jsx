@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { Link, NavLink, Navigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, NavLink, Navigate, useLocation } from 'react-router-dom'
 import './Home.scss'
 import History from '../History/History';
 import Profile from '../Profile/Profile';
 import SOSButton from '../../components/SOSbutton/SOSbutton';
+import { GlobalContext } from '../../App';
 
 
 export default function Home() {
 
-  const path = window.location.pathname;
+  const { lastP, setLastP } = useContext(GlobalContext)
+ 
+  const path =  useLocation().pathname;
 
-   // solución glitch profile
-   const [isLoaded, setIsLoaded] = useState(false);
-   
-   useEffect(() => {
-    // Este código se ejecutará después de que el componente se haya renderizado
-    console.log('Component mounted');
-
-    // Simular una operación al final del renderizado
-    setTimeout(() => {
-      setIsLoaded(true); // Cambiar el estado para indicar que el componente está completamente cargado
-    }, 0);
-    // Focus on home
-    setTimeout(() => {
-      const element = document.getElementById('home');
-      if (element && path === '/') {
-        element.scrollIntoView();
-        document.querySelector(".master").scrollTo({ top: '0px', behavior: 'smooth' });
+  //stablish last page viewed
+  useEffect(() => {
+  
+    if (path === '/') {
+      return () => {
+        setLastP(path);
       }
-    }, 20);
+    }
+  }, [])
+  //
+ 
+  // Focus on home
+   useEffect(() => {
+    
+    
+    
+    const element = document.getElementById('home');
+    if (element && path === '/') {
+      element.scrollIntoView();
+      document.querySelector(".master").scrollTo({ top: '0px', behavior: 'smooth' });
+    }
+
     
 
   }, []);
@@ -91,8 +97,7 @@ export default function Home() {
    //
     return (
     <>
-      
-      { (isLoaded && path === '/') && <Profile/>}
+      { path === '/' && <Profile/>}
       <section id='home' className='home'>
           <h2 className='h1 f-w home_title'>Click to Start</h2>    
           <Link className='btt_scanner' to='/scanner'>
@@ -112,7 +117,7 @@ export default function Home() {
             <Link className="link_nav" to='/history'><span className="material-symbols-rounded icon">history</span><span className='span f-w'>History</span></Link>  
           </nav>
       </section>
-      { (isLoaded && path === '/') && <History/>}
+      { path === '/' && <History/>}
       {/* moves navigations */}
       {(path == '/' && detDX == 1) &&
           // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario

@@ -51,8 +51,8 @@ export default function Estilos() {
           <p className='p'>Button Txt Alt</p><button className='btt_txt_alt h3'>Click Me</button>
           <p className='p'>Button Txt Alt icon</p><button className='btt_txt_alt h3'>Click Me<span className="material-symbols-rounded icon_btt">history</span></button>
           <p className='p'>Input txt</p><input type='text' className='input' id='searchbar' placeholder='Search by Name' />
-          <p className='p'>Input txt</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minlength="8" />
-          <p className='p'>Input txt disabled</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minlength="8" disabled/>
+          <p className='p'>Input txt</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minLength="8" />
+          <p className='p'>Input txt disabled</p><input type='text' className='input' id='searchbar' placeholder='Search by Name'  required minLength="8" disabled/>
           <p className='p'>Tag</p><button className='tag span'>Tag</button>
           <p className='p'>Tag Disabled</p><button className='tag span' disabled >Tag</button>
           <p className='p'>Tag alt</p><button className='tag_alt span'>Tag</button>

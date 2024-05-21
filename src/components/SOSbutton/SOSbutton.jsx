@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../App';
 
 export default function SOSbutton() {
 
   const { lastP, setLastP } = useContext(GlobalContext)
+ 
+  const path =  useLocation().pathname;
 
   const [pressTimer, setPressTimer] = useState(null);
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ export default function SOSbutton() {
     if (pressTimer) {
       clearTimeout(pressTimer);
       setPressTimer(null);
-      navigate('/styles'); // Navegar a /styles si se libera antes de 3 segundos
+      navigate('/styles');// Navegar a /styles si se libera antes de 3 segundos
     }
   };
 
