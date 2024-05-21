@@ -10,11 +10,12 @@ export default function SOSbutton() {
 
   const [pressTimer, setPressTimer] = useState(null);
   const navigate = useNavigate();
-
+  
+  // Navegar a /emergency-contact después de 2 segundo
   const handleTouchStart = () => {
     const timer = setTimeout(() => {
-      navigate('/emergency-contact'); // Navegar a /emergency-contact después de 3 segundos
-    }, 3000); // 3 segundos
+      {path !== '/emergency-contact' && navigate('/emergency-contact')}; 
+    }, 2000); 
     setPressTimer(timer);
   };
 
@@ -22,7 +23,7 @@ export default function SOSbutton() {
     if (pressTimer) {
       clearTimeout(pressTimer);
       setPressTimer(null);
-      navigate('/styles');// Navegar a /styles si se libera antes de 3 segundos
+      window.location.href = 'tel:+1234567890';
     }
   };
 
