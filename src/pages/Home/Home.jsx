@@ -8,6 +8,7 @@ import { GlobalContext } from '../../App';
 
 
 export default function Home() {
+  console.log('blu');
 
   const { lastP, setLastP } = useContext(GlobalContext)
  
