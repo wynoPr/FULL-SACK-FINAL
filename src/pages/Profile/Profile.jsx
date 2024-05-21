@@ -2,10 +2,31 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Profile.scss'
 import Home from '../Home/Home';
 import History from '../History/History';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../App';
+import { isElement } from 'react-dom/test-utils';
+import axios from 'axios';
+import EditProfile from '../../components/EditProfile/EditProfile';
 
 export default function Profile() {
+  const [allergyNames, setAllergyNames] = useState([])
+  const path = window.location.pathname;
+  const user = JSON.parse(localStorage.getItem('userInfo'));
+  // const navigate = useNavigate();
+  useEffect(() => {
+    for (let index = 0; index < user.allergyId.length; index++) {
+      axios.get(`http://localhost:3000/allergens/${user.allergyId[index]}`)
+        .then(response => {
+          setAllergyNames([...allergyNames, response.data.data.name]);
+        })
+    }
+  }, [])
+  useEffect(() => {
+    const element = document.getElementById('profile');
+    if (element && path === '/profile') {
+      element.scrollIntoView();
+    }
+  }, [])
 
   const { lastP, setLastP } = useContext(GlobalContext)
  
@@ -33,7 +54,7 @@ export default function Profile() {
   const [detDX, setDetDX] = useState(0);
 
   useEffect(() => {
-    if ( path === '/profile') {
+    if (path === '/profile') {
       let startX = 0;
     let currentX = 0;
 
@@ -75,37 +96,45 @@ export default function Profile() {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  
     }
   }, []);
-   
+  const [editable, setEditable] = useState(false);
+  const handleEditProfileClick = () => {
+    setEditable(true);
+  };
+
 
   return (
     <>
+      {editable && <EditProfile user={user} allergyNames={allergyNames} setEditable={setEditable} />}
+      {!editable &&
         <section className='profile container' id='profile'>
-          <h2 className='h1 danger profile_head mg-b-20'>Hello dear,<br/> what's the news?</h2>
-            <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt=''/>
-            <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
-            <div className='profile_info'>
-              <h3 className='h2'>Name: </h3><p className='p-b'>Mº Jacinta López</p>
-              <h3 className='h2'>Mail: </h3><p className='p-b'>ja.lo@gmail.com</p>
-              <h3 className='h2'>Pal since: </h3><p className='p-b'>24-05-24</p>
-            </div>
-            <div className='profile_allergies'>
-              <h2 className='h2 profile_allergies_head mg-b-20'>Allergies:</h2>
-              <span className='tag_alt_danger span  mg-b-10'>Gluten</span>
-              <span className='tag_alt_danger span  mg-b-10'>Trigo</span>
-              <span className='tag_alt_danger span  mg-b-10'>Glutamato</span>
-              <span className='tag_alt_danger span  mg-b-10'>Substancia-X</span>
-              <span className='tag_alt_danger span  mg-b-10'>Piña</span>
-            </div>
-            <button className='btt_txt h2'>Edit your profile</button>
+          <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> what's the news?</h2>
+          <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
+          <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
+          <div className='profile_info'>
+            <h3 className='h2'>Name: </h3><p className='p-b'>{user.name}</p>
+            <h3 className='h2'>Mail: </h3><p className='p-b'>{user.mail}</p>
+            <h3 className='h2'>Pal since: </h3><p className='p-b'>{user.regDate.substring(0, 10)}</p>
+          </div>
+          <div className='profile_allergies'>
+            <h2 className='h2 profile_allergies_head mg-b-20'>Allergies:</h2>
+            {allergyNames.map((allergen, index) => (
+              <span key={index} className='tag_alt_danger span mg-b-10'>
+                {allergen}
+              </span>
+            ))}
+
+          </div>
+          <button className='btt_txt h2' onClick={handleEditProfileClick}>Edit your profile</button>
         </section>
-        { path === '/profile' && <Home/>}
-        {(path == '/profile' && detDX == 1) &&
-          // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
-          <Navigate to="/" />
-        }
+      }
+      {path === '/profile' && <Home />}
+      {(path == '/profile' && detDX == 1) &&
+        // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
+        <Navigate to="/" />
+      }
+
     </>
   )
 }

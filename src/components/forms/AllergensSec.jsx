@@ -7,12 +7,12 @@ import { useFormContext } from 'react-hook-form';
 //  todos los diferentes alergenos o si se hace la busqeuda desde e front sin acceder a la api
 //---------------------------------------------------
 let selectedAllergens = []
-export default function allergensSec() {
+export default function AllergensSec() {
     const { getValues, setValue, register, formState: { errors } } = useFormContext();
 
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-
+    const [selectedAllergens, setSelectedAllergens] = useState([]);
 
 
     useEffect(() => {
@@ -41,6 +41,10 @@ export default function allergensSec() {
         setSuggestions([]);
     };
 
+    const handleRemoveAllergen = (indexToRemove) => {
+        setSelectedAllergens(selectedAllergens.filter((_, id) => id !== indexToRemove));
+    };
+
     return (
         <>
             <h2 className='h1 danger form_title'>now select your allergies or intolerances</h2>
@@ -60,7 +64,9 @@ export default function allergensSec() {
             </ul>
             {
                 selectedAllergens.map((allergen, id) => (
-                    <span key={id}><p>{allergen}</p></span>
+                    <span key={id}><p>{allergen}</p>
+                        <button onClick={() => handleRemoveAllergen(id)}>Remove</button>
+                    </span>
                 ))
             }
 

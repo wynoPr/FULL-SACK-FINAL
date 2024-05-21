@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -44,7 +44,7 @@ export default function LoginForm() {
                 <button type="submit" className='btt h3'>Login</button>
             </form>
             <p className='h3'>New on Hypal?</p>
-            <button>Sign in</button>
+            <Link to="/register">Sign in</Link>
 
         </>
     )
