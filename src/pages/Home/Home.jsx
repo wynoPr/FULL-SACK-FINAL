@@ -8,7 +8,7 @@ import { GlobalContext } from '../../App';
 
 
 export default function Home() {
-  console.log('blu');
+  // console.log('blu');
 
   const { lastP, setLastP } = useContext(GlobalContext)
  
@@ -79,6 +79,9 @@ export default function Home() {
       }
     };
 
+    const handleTouchMove = (event) => {
+      currentX = event.touches[0].clientX;
+    };
 
       window.addEventListener('touchstart', handleTouchStart);
       window.addEventListener('touchmove', handleTouchMove);
@@ -105,7 +108,7 @@ export default function Home() {
           <div className='blob_b'></div>
           <div className='blob_c'></div>
         </Link>
-        {/* <SOSButton/> */}
+        <SOSButton/>
         <nav className='home_nav'>
           <Link className="link_nav" to='/profile'><span className="material-symbols-rounded icon">for_you</span><span className='span f-w'>Profile</span></Link>
           <div>
