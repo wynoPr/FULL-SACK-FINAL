@@ -9,8 +9,8 @@ export default function Header() {
 
   return (
     <header className='header'>
-        <Link to={lastP} className='btt_txt_smol h3'>&lt; Go Back</Link>
         <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
+        { ( lastP && lastP !== '/') && <Link to={lastP} className='btt_txt_smol h3'>&lt; Go Back</Link>}
 
     </header>
   )
