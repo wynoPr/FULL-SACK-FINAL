@@ -10,6 +10,7 @@ import {
 // import Profile from "./pages/Styles/Profile/Profile";
 // import History from "./pages/Styles/History/History";
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
+import ItemPage from "./pages/Item/ItemPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/styles" element={<Estilos />} />
           <Route path="*" element={<Navigate to="/" />} /> */}
           <Route path="/scanner" element={<ScannerPage />} />
+          <Route path="/scanner/item" element={<ItemPage />} />
         </Routes>
       </BrowserRouter>
     </>

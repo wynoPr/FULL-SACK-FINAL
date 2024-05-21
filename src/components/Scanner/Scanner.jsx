@@ -37,6 +37,7 @@ export function Scanner({ onScan }) {
     Quagga.onDetected((code) => {
       //2 onScan is a prop that holds the code of the barcode
       onScan(code.codeResult.code);
+      Quagga.stop();
     });
 
     //3 initialize the barcode scanner
