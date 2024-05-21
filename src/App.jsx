@@ -7,10 +7,15 @@ import Profile from './pages/Profile/Profile'
 import History from './pages/History/History'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EmerContact from './pages/EmerContact/EmerContact'
 import Loading from './components/Loading/Loading'
+import ScannerPage from "./pages/ScannerPage/ScannerPage";
+import ItemPage from "./pages/Item/ItemPage";
 
 export const GlobalContext = React.createContext();
+
+
 
 
 function App() {
@@ -30,7 +35,7 @@ function App() {
       <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
 
-          <Routes>
+        <Routes>
 
             <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
             <Route path="/login" element={<Login />} />
@@ -38,14 +43,16 @@ function App() {
             <Route path="/history" element={<div className='master'><History/></div>} />
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
             <Route path="/emergency-contact" element={<EmerContact />} />
-
+            <Route path="/scanner" element={<ScannerPage />} />
+            <Route path="/item/:id" element={<ItemPage />} />
+            
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
-      </GlobalContext.Provider> 
+      </GlobalContext.Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

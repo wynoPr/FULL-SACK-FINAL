@@ -12,6 +12,7 @@
     height: 100vh;
     background: linear-gradient(180deg, rgba(156,205,161,1) 1%, rgba(118,170,138,1) 100%);
     z-index: 2;
+
     &_nav{
         position: absolute;
         bottom: 0px;
@@ -33,6 +34,7 @@
     top: 60%;
 
 }
+
 .link_nav {
     color: #f8f8f8;
     margin: 0 10px;
