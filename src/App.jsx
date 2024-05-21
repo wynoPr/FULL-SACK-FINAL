@@ -9,6 +9,8 @@ import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EmerContact from './pages/EmerContact/EmerContact'
+import ScannerPage from "./pages/ScannerPage/ScannerPage";
+import ItemPage from "./pages/Item/ItemPage";
 
 export const GlobalContext = React.createContext();
 
@@ -18,6 +20,7 @@ export const GlobalContext = React.createContext();
 function App() {
 
   const [count, setCount] = useState(0)
+
 
   const path = window.location.pathname;
   console.log(path);
@@ -36,14 +39,16 @@ function App() {
             <Route path="/history" element={<div className='master'><History/></div>} />
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
             <Route path="/emergency-contact" element={<EmerContact />} />
-
+            <Route path="/scanner" element={<ScannerPage />} />
+            <Route path="/scanner/item" element={<ItemPage />} />
+            
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider> 
     </>
-  )
+  );
 }
 
-export default App
+export default App;

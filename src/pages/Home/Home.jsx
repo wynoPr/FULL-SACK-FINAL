@@ -29,8 +29,7 @@ export default function Home() {
         document.querySelector(".master").scrollTo({ top: '0px', behavior: 'smooth' });
       }
     }, 20);
-
-
+    
   }, []);
 
   //nav when scrollX
@@ -44,6 +43,7 @@ export default function Home() {
     const handleTouchStart = (event) => {
       startX = event.touches[0].clientX;
       // console.log('Touch start:', startX);
+
     };
 
     const handleTouchEnd = (event) => {
