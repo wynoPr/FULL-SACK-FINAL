@@ -36,7 +36,6 @@ export default function allergensSec() {
     const handleSuggestionClick = (suggestion) => {
         const currentAllergies = getValues('allergyId');
         setValue('allergyId', [...currentAllergies, suggestion._id]);
-        debugger
         selectedAllergens.push(suggestion.name)
         setQuery('');
         setSuggestions([]);
@@ -44,8 +43,9 @@ export default function allergensSec() {
 
     return (
         <>
-            <h2>Select Allergens</h2>
-            <input
+            <h2 className='h1 danger form_title'>now select your allergies or intolerances</h2>
+            <p className='h3'>marked items will be identified in your searches as hazardous to your health.</p>
+            <input className='input'
                 type="text"
                 placeholder="Search for allergens"
                 value={query}

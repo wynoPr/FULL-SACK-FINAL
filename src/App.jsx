@@ -7,9 +7,12 @@ import Profile from './pages/Profile/Profile'
 import History from './pages/History/History'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EmerContact from './pages/EmerContact/EmerContact'
 
 export const GlobalContext = React.createContext();
+
+
 
 
 function App() {
@@ -26,8 +29,7 @@ function App() {
       <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
 
-          <Routes>
-
+        <Routes>
             <Route path="/" element={<div className='master of-n'><Home /></div>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
