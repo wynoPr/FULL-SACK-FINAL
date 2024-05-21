@@ -88,7 +88,7 @@ export default function Home() {
   return (
     <>
 
-      {(isLoaded && path === '/') && <Profile />}
+      {path === '/' && <Profile />}
       <section id='home' className='home'>
         <h2 className='h1 f-w home_title'>Click to Start</h2>
         <Link className='btt_scanner' to='/scanner'>
@@ -108,7 +108,9 @@ export default function Home() {
           <Link className="link_nav" to='/history'><span className="material-symbols-rounded icon">history</span><span className='span f-w'>History</span></Link>
         </nav>
       </section>
-      {(isLoaded && path === '/') && <History />}
+      { path === '/' && <History />}
+
+
       {/* moves navigations */}
       {(path == '/' && detDX == 1) &&
         // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario

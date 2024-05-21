@@ -9,6 +9,7 @@ import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EmerContact from './pages/EmerContact/EmerContact'
+import Estilos from "./pages/Styles/Estilos";
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 
@@ -33,6 +34,7 @@ function App() {
         <BrowserRouter>
 
         <Routes>
+
             <Route path="/" element={<div className='master of-n'><Home /></div>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -40,13 +42,13 @@ function App() {
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
             <Route path="/emergency-contact" element={<EmerContact />} />
             <Route path="/scanner" element={<ScannerPage />} />
-            <Route path="/scanner/item" element={<ItemPage />} />
+            <Route path="/item/:id" element={<ItemPage />} />
             
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
-      </GlobalContext.Provider> 
+      </GlobalContext.Provider>
     </>
   );
 }
