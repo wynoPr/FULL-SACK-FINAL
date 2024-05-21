@@ -1,14 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
     const onSubmit = async (data) => {
         try {
             const response = await axios.post('http://localhost:3000/auth/login', data);
             console.log('Intento Login successful:', response.data);
-            localStorage.setItem(response.data.token)// Mirar si esto tiene sentido
+            localStorage.setItem('authToken', response.data.data.token);
+            localStorage.setItem('userInfo', JSON.stringify(response.data.data.user));
+            navigate('/home');
             // Puedes almacenar el token de autenticación o redirigir al usuario aquí
         } catch (error) {
             console.error('There was an error logging in!', error);
