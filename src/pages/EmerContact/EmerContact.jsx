@@ -17,7 +17,7 @@ export default function EmerContact() {
     
         return () => {
         setLastP(path)
-        // console.log(lastP);
+        console.log(lastP);
         }
     }, [])
   //
