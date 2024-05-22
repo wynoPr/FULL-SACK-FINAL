@@ -8,7 +8,6 @@ export default function Header() {
   const { lastP, setLastP } = useContext(GlobalContext);
   const path = useLocation().pathname;
 
-    const path = useLocation().pathname;
 
   return (
     <header className='header'>

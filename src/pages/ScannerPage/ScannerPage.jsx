@@ -21,11 +21,11 @@ export default function ScannerPage() {
 
 
   //     // const data = res.data();
-  //     // console.log(code);
-  //   } catch (error) {
-  //     console.error("error at compareProduct", error);
-  //   }
-  // };
+      console.log(res);
+    } catch (error) {
+      console.error("error at scanning Product", error);
+    }
+  };
   //1 when the father receives the barcode as a prop, it calls the compareProduct function
   return (
 
