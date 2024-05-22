@@ -1,0 +1,42 @@
+
+
+
+.inicio{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    &_head{
+        transition: 0.3s ease-in;
+        animation: slideUp 1s ease-out forwards;
+    }
+    &_sub{
+        transition: 0.3s ease-in;
+        animation: slideUp 1.5s ease-out forwards;
+    }
+}
+@keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .onboard {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+  }
