@@ -7,12 +7,12 @@ import { useFormContext } from 'react-hook-form';
 //  todos los diferentes alergenos o si se hace la busqeuda desde e front sin acceder a la api
 //---------------------------------------------------
 let selectedAllergens = []
-export default function allergensSec() {
+export default function AllergensSec() {
     const { getValues, setValue, register, formState: { errors } } = useFormContext();
 
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-
+    const [selectedAllergens, setSelectedAllergens] = useState([]);
 
 
     useEffect(() => {
@@ -41,26 +41,31 @@ export default function allergensSec() {
         setSuggestions([]);
     };
 
+    const handleRemoveAllergen = (indexToRemove) => {
+        setSelectedAllergens(selectedAllergens.filter((_, id) => id !== indexToRemove));
+    };
     return (
         <>
-            <h2 className='h1 danger form_title'>now select your allergies or intolerances</h2>
-            <p className='h3'>marked items will be identified in your searches as hazardous to your health.</p>
+            <h2 className='h1 danger form_title'>Now, select your allergies or intolerances</h2>
+            <p className='h3 form_subtitle faint it'>Marked items will be identified in your searches as hazardous to your health.</p>
             <input className='input'
                 type="text"
                 placeholder="Search for allergens"
                 value={query}
                 onChange={handleQueryChange}
             />
-            <ul>
+            { suggestions.length > 0  && <ul className='suggestions'>
                 {suggestions.map(suggestion => (
-                    <li key={suggestion._id} onClick={() => handleSuggestionClick(suggestion)}>
+                    <li className='tag_alt span' key={suggestion._id} onClick={() => handleSuggestionClick(suggestion)}>
                         {suggestion.name}
                     </li>
                 ))}
-            </ul>
+            </ul>}
             {
                 selectedAllergens.map((allergen, id) => (
-                    <span key={id}><p>{allergen}</p></span>
+                    <span className='tag_alt span' key={id}><p>{allergen}</p>
+                        <button className='no-bg' onClick={() => handleRemoveAllergen(id)}><span className="material-symbols-rounded icon_btt link">close</span></button>
+                    </span>
                 ))
             }
 

@@ -7,9 +7,9 @@ import SOSButton from "../../components/SOSbutton/SOSbutton";
 import { GlobalContext } from "../../App";
 
 export default function Home() {
-  console.log("blu");
 
   const { lastP, setLastP } = useContext(GlobalContext);
+
 
   const path = useLocation().pathname;
 
@@ -41,46 +41,41 @@ export default function Home() {
     if (path === "/") {
       let startX = 0;
       let currentX = 0;
+      
+    const handleTouchStart = (event) => {
+      startX = event.touches[0].clientX;
+      // console.log('Touch start:', startX);
 
-      const handleTouchStart = (event) => {
-        startX = event.touches[0].clientX;
-        // console.log('Touch start:', startX);
-      };
+    };
 
-      const handleTouchEnd = (event) => {
-        const viewportWidth = window.innerWidth;
-        const dMin = viewportWidth * 0.6;
-        // console.log('Touch end:', currentX);
+    const handleTouchEnd = (event) => {
+      const viewportWidth = window.innerWidth;
+      const dMin = viewportWidth * 0.6;
+      // console.log('Touch end:', currentX);
 
-        if (currentX - startX > dMin && currentX != 0) {
-          // console.log(-1);
-          document
-            .querySelector(".master")
-            .scrollTo({ left: 0, behavior: "smooth" });
-          setTimeout(() => {
-            setDetDX(-1);
-          }, 300);
-        } else if (currentX - startX < -dMin && currentX != 0) {
-          // console.log(1);
-          document
-            .querySelector(".master")
-            .scrollTo({ left: viewportWidth * 2, behavior: "smooth" });
-          setTimeout(() => {
-            setDetDX(1);
-          }, 300);
-        } else {
-          setDetDX(0);
-          // console.log(0);
-          // console.log( document.querySelector(".master"));
-          document
-            .querySelector(".master")
-            .scrollTo({ left: viewportWidth, behavior: "smooth" });
-        }
-      };
+      if ((currentX - startX) > dMin && currentX != 0) {
+        // console.log(-1);
+        document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          setDetDX(-1);
+        }, 300); 
+      } else if ((currentX - startX) < -dMin && currentX != 0) {
+        // console.log(1);
+        document.querySelector(".master").scrollTo({ left: (viewportWidth * 2) , behavior: 'smooth' });
+        setTimeout(() => {
+          setDetDX(1);
+        }, 300);
+      } else {
+        setDetDX(0);
+        // console.log(0);
+        // console.log( document.querySelector(".master"));
+        document.querySelector(".master").scrollTo({ left: viewportWidth, behavior: 'smooth' });
+      }
+    };
 
-      const handleTouchMove = (event) => {
-        currentX = event.touches[0].clientX;
-      };
+    const handleTouchMove = (event) => {
+      currentX = event.touches[0].clientX;
+    };
 
       window.addEventListener("touchstart", handleTouchStart);
       window.addEventListener("touchmove", handleTouchMove);

@@ -84,9 +84,11 @@ body {
 
 .container {
   max-width: 410px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 //inputs
@@ -193,6 +195,23 @@ body {
 .input:invalid {
   color: #2d2a26;
   border-color: #ba2022;
+}
+.input_error{
+  background-color: #f8f8f8;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border-bottom: 5px solid #9CCDA1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  font-family: "Neutra";
+  font-weight: 500;
+  font-size: x-large;
+  color: #2d2a26;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  color: #2d2a26;
+  border-color: #BA2022;
 }
 
 .tag {
@@ -301,6 +320,10 @@ body {
   height: 100%;
 }
 
+.no-bg{
+  background: none;
+}
+
 //Styles
 
 .f-w {
@@ -347,7 +370,9 @@ body {
   height: 28px;
   font-size: 28px;
   margin: 5px;
-  &_btt {
+  background-color: #f8f8f800;
+  
+  &_btt{
     @extend .icon;
     height: auto;
     font-size: 24px;

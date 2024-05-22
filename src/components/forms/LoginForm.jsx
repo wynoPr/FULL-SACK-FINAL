@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,10 +19,10 @@ export default function LoginForm() {
         }
     };
     return (
-        <>
-            <h2 className='h1 danger form_title'>welcome back</h2>
-            <p className='h3'>please enter your details to continue</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <section className='container login'>
+            <h2 className='h1 danger form_title'>Welcome Back</h2>
+            <p className='h3 it faint '>Please enter your details to continue</p>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label htmlFor="mail"></label>
                     <input className='input' placeholder='email'
@@ -44,8 +44,8 @@ export default function LoginForm() {
                 <button type="submit" className='btt h3'>Login</button>
             </form>
             <p className='h3'>New on Hypal?</p>
-            <button>Sign in</button>
+            <Link className='span btt_txt it danger' to="/register">Sign in</Link>
 
-        </>
+        </section>
     )
 }
