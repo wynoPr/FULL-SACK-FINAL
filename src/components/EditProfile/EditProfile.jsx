@@ -60,8 +60,8 @@ export default function EditProfile({ allergyNames, setEditable }) {
     return (
         <>
             <section className='profile container' id='profile'>
-                <form onSubmit={handleSubmit(saveEdits)}>
-                    <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> what's the news?</h2>
+                <form className='profile_edit' onSubmit={handleSubmit(saveEdits)}>
+                    <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> What's the news?</h2>
                     <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
                     <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
                     <div className='profile_info'>
@@ -80,8 +80,8 @@ export default function EditProfile({ allergyNames, setEditable }) {
                     <div className='profile_allergies'>
 
                         {/* <AllergensSec /> */}
-                        <p className='h3'>marked items will be identified in your searches as hazardous to your health.</p>
-                        <input className='input'
+                        <p className='h3 profile_allergies_disclaimer it'>Marked items will be identified in your searches as hazardous to your health.</p>
+                        <input className='input mg-b-20'
                             type="text"
                             placeholder="Search for allergens"
                             value={query}
@@ -110,7 +110,7 @@ export default function EditProfile({ allergyNames, setEditable }) {
 
                     </div>
 
-                    <button className='btt_txt h2' type="submit">Save</button>
+                    <button className='btt h2' type="submit">Save</button>
                 </form>
 
                 {/* <button className='btt_txt h2' onClick{saveEdits}>save</button> */}

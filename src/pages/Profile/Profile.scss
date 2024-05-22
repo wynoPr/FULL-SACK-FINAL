@@ -2,23 +2,36 @@
     min-width: 100vw;
     height: 100vh;
     background-color: #FCF5EA;
-    padding-top: 40px;
 
     &_info {
-        width: 70%;
+        width: 80%;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-row-gap: 10px;
     }
+    &_head {
+        width: 70%;
+        text-align: left;
+    }
 
     &_allergies {
-        width: 70%;
+        width: 80%;
         margin: 10px 0 20px 0;
         display: flex;
         flex-wrap: wrap;
 
         &_head {
             width: 100%;
+            text-align: left;
         }
+        &_disclaimer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    &_edit{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

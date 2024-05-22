@@ -44,28 +44,27 @@ export default function AllergensSec() {
     const handleRemoveAllergen = (indexToRemove) => {
         setSelectedAllergens(selectedAllergens.filter((_, id) => id !== indexToRemove));
     };
-
     return (
         <>
-            <h2 className='h1 danger form_title'>now select your allergies or intolerances</h2>
-            <p className='h3'>marked items will be identified in your searches as hazardous to your health.</p>
+            <h2 className='h1 danger form_title'>Now, select your allergies or intolerances</h2>
+            <p className='h3 form_subtitle faint it'>Marked items will be identified in your searches as hazardous to your health.</p>
             <input className='input'
                 type="text"
                 placeholder="Search for allergens"
                 value={query}
                 onChange={handleQueryChange}
             />
-            <ul>
+            { suggestions.length > 0  && <ul className='suggestions'>
                 {suggestions.map(suggestion => (
-                    <li key={suggestion._id} onClick={() => handleSuggestionClick(suggestion)}>
+                    <li className='tag_alt span' key={suggestion._id} onClick={() => handleSuggestionClick(suggestion)}>
                         {suggestion.name}
                     </li>
                 ))}
-            </ul>
+            </ul>}
             {
                 selectedAllergens.map((allergen, id) => (
-                    <span key={id}><p>{allergen}</p>
-                        <button onClick={() => handleRemoveAllergen(id)}>Remove</button>
+                    <span className='tag_alt span' key={id}><p>{allergen}</p>
+                        <button className='no-bg' onClick={() => handleRemoveAllergen(id)}><span className="material-symbols-rounded icon_btt link">close</span></button>
                     </span>
                 ))
             }
