@@ -19,10 +19,10 @@ export default function LoginForm() {
         }
     };
     return (
-        <>
-            <h2 className='h1 danger form_title'>welcome back</h2>
-            <p className='h3'>please enter your details to continue</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <section className='container login'>
+            <h2 className='h1 danger form_title'>Welcome Back</h2>
+            <p className='h3 it faint '>Please enter your details to continue</p>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label htmlFor="mail"></label>
                     <input className='input' placeholder='email'
@@ -44,8 +44,8 @@ export default function LoginForm() {
                 <button type="submit" className='btt h3'>Login</button>
             </form>
             <p className='h3'>New on Hypal?</p>
-            <Link to="/register">Sign in</Link>
+            <Link className='span btt_txt it danger' to="/register">Sign in</Link>
 
-        </>
+        </section>
     )
 }

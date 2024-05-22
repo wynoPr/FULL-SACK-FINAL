@@ -7,10 +7,11 @@ import { GlobalContext } from '../../App';
 import { isElement } from 'react-dom/test-utils';
 import axios from 'axios';
 import EditProfile from '../../components/EditProfile/EditProfile';
+import Header from '../../components/Header/Header';
 
 export default function Profile() {
   const [allergyNames, setAllergyNames] = useState([])
-  const path = window.location.pathname;
+  const path = useLocation().pathname;
   const user = JSON.parse(localStorage.getItem('userInfo'));
   // const navigate = useNavigate();
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Profile() {
 
   const { lastP, setLastP } = useContext(GlobalContext)
  
-  const path = useLocation().pathname;
+  // const path = useLocation().pathname;
 
   //stablish last page viewed
   useEffect(() => {
@@ -109,7 +110,8 @@ export default function Profile() {
       {editable && <EditProfile user={user} allergyNames={allergyNames} setEditable={setEditable} />}
       {!editable &&
         <section className='profile container' id='profile'>
-          <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> what's the news?</h2>
+        <Header/>
+          <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> What's the news?</h2>
           <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
           <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
           <div className='profile_info'>

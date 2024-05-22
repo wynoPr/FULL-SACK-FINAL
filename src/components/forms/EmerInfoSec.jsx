@@ -7,7 +7,7 @@ export default function EmerInfoSec() {
     return (
         <>
             <h2 className='h1 danger form_title'>Let´s add your emergency contact</h2>
-            <h2 className='h3'>We´ll contact your emergency contact in case of emergency</h2>
+            <h2 className='h3 it faint form_subtitle'>We´ll contact your emergency contact in case of emergency</h2>
             <label>
 
                 <input className='input'
