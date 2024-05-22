@@ -1,11 +1,12 @@
+
 import React, { useContext } from 'react'
 import './Header.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { GlobalContext } from '../../App'
 
 export default function Header() {
-
-    const { lastP, setLastP } = useContext(GlobalContext)
+  const { lastP, setLastP } = useContext(GlobalContext);
+  const path = useLocation().pathname;
 
     const path = useLocation().pathname;
 
@@ -15,5 +16,5 @@ export default function Header() {
         { ( lastP && lastP !== '/' && path === '/') && <Link to={lastP} className='btt_txt_smol h3'>&lt; Go Back</Link>}
 
     </header>
-  )
+  );
 }

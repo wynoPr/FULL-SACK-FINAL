@@ -1,0 +1,68 @@
+.scanner {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0px;
+  max-width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    rgba(156, 205, 161, 1) 1%,
+    rgba(118, 170, 138, 1) 100%
+  );
+}
+.c-barcode-scanner {
+  width: 80vw;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin: 40px 20px 20px 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  outline: 10px solid #dde0df;
+}
+video {
+  height: 100%;
+}
+
+.waiting {
+  width: 40vw;
+  padding: 20px 0;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  &_dot {
+    height: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #ffebd0;
+    margin: 0 10px;
+    animation: blink 3s infinite;
+    &_a {
+      @extend .waiting_dot;
+    }
+    &_b {
+      @extend .waiting_dot;
+      animation-delay: 1s;
+    }
+    &_c {
+      @extend .waiting_dot;
+      animation-delay: 2s;
+    }
+  }
+}
+@keyframes blink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

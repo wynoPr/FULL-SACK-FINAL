@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EditProfile from './components/EditProfile/EditProfile'
 import EmerContact from './pages/EmerContact/EmerContact'
 import Loading from './components/Loading/Loading'
+
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 import OnBoarding from './pages/OnBoarding/OnBoarding'
@@ -19,16 +20,13 @@ import OnBoarding from './pages/OnBoarding/OnBoarding'
 export const GlobalContext = React.createContext();
 
 function App() {
-
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const [lastP, setLastP] = useState();
 
   useEffect(() => {
     console.log(lastP);
-  
-  }, [lastP])
-  
+  }, [lastP]);
 
   return (
     <>
@@ -44,8 +42,8 @@ function App() {
             <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
             <Route path="/emergency-contact" element={<EmerContact />} />
             <Route path="/scanner" element={<ScannerPage />} />
-            <Route path="/item/:id" element={<ItemPage />} />
-            
+            <Route path="/item/:code" element={<ItemPage />} />
+
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
