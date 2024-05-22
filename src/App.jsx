@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+
 import Estilos from './pages/Styles/Estilos'
 
 import Home from './pages/Home/Home'
@@ -14,6 +15,7 @@ import Loading from './components/Loading/Loading'
 
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
+import OnBoarding from './pages/OnBoarding/OnBoarding'
 
 export const GlobalContext = React.createContext();
 
@@ -32,6 +34,7 @@ function App() {
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
+            <Route path="/welcome" element={<OnBoarding/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/history" element={<div className='master'><History/></div>} />

@@ -267,17 +267,25 @@ body {
 
 //img
 
-.img {
-  width: 40vw;
+
+.img{
+  width: 40%;
   aspect-ratio: 1/1;
   border-radius: 10px;
   margin: 20px;
-  &_s {
-    @extend .img;
-    width: 20vw;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    margin: 20px;
+  &_s{
+      @extend .img;
+      width: 20%;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      margin: 20px;
+  }
+  &_b{
+      @extend .img;
+      width: 80%;
+      aspect-ratio: 1/1;
+      border-radius: 20px;
+      margin: 20px;
   }
 }
 .img-r {
