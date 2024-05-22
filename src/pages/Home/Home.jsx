@@ -16,7 +16,6 @@ export default function Home() {
 
   //stablish last page viewed
   useEffect(() => {
-  
     if (path === '/') {
       return () => {
         setLastP(path);

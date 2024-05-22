@@ -129,6 +129,7 @@ export default function Profile() {
 
           </div>
           <button className='btt_txt h2' onClick={handleEditProfileClick}>Edit your profile</button>
+          <button className='btt_txt h2 danger' onClick={localStorage.clear()}>Log Out</button>
         </section>
       }
       {path === '/profile' && <Home />}
