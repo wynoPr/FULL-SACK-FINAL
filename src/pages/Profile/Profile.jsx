@@ -110,6 +110,10 @@ export default function Profile() {
   const handleEditProfileClick = () => {
     setEditable(true);
   };
+  //logout
+  const logOut = () => {
+    // localStorage.clear()
+  };
 
 
   return (
@@ -138,7 +142,7 @@ export default function Profile() {
 
           </div>
           <button className='btt_txt h2' onClick={handleEditProfileClick}>Edit your profile</button>
-          <button className='btt_txt h2 danger' onClick={localStorage.clear()}>Log Out</button>
+          <button className='btt_txt h2 danger' onClick={logOut()}>Log Out</button>
         </section>
       }
       {path === '/profile' && <Home />}

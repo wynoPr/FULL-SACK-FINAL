@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 export default function HistoryCard({ item }) {
   console.log(item);
   return (
-    <Link to='' className='historyCard link'>
+    <>
+      {item && <Link to='' className='historyCard link'>
       <img className='img_s valid' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
       <div className='historyCard_info'>
         <h3 className='h3 mg-b-10'>{item.name}</h3>
@@ -19,6 +20,7 @@ export default function HistoryCard({ item }) {
         )}
       </div>
       <button className='close'><span className="material-symbols-rounded icon link">close</span></button>
-    </Link>
+    </Link>}
+    </>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, Navigate, useLocation } from "react-router-dom";
+import { Link, NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
 import "./Home.scss";
 import History from "../History/History";
 import Profile from "../Profile/Profile";

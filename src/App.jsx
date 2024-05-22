@@ -28,14 +28,19 @@ function App() {
     console.log(lastP);
   }, [lastP]);
 
+
+
   return (
     <>
       <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
         <Routes>
+            <Route path="/login" element={<Login />} />
+            {(!localStorage.getItem('authToken')) ? <Route path="*" element={<Navigate to="/login" />} /> 
+            :
+            (<>
             <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
             <Route path="/welcome" element={<OnBoarding/>} />
-            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/history" element={<div className='master'><History/></div>} />
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
@@ -46,6 +51,7 @@ function App() {
 
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
+            </>)}
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
