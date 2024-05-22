@@ -4,8 +4,8 @@ import "./Scanner.scss";
 import { useNavigate } from "react-router-dom";
 
 //4last but not least (cuz its the last thing to do): onScan is a prop sent to the father
-export function Scanner({ onScan, scannedCode }) {
-  const navigate = useNavigate();
+export function Scanner({ onScan, scannedCode, navigate }) {
+  // const navigate = useNavigate();
 
   if (scannedCode !== null) {
     navigate(`/item/${scannedCode}`);

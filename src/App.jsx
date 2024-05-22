@@ -11,8 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import EmerContact from "./pages/EmerContact/EmerContact";
 import Loading from "./components/Loading/Loading";
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
-//DESCOMENTAR Q ES SOLO PARA EL PUSH
-// import ItemPage from "./pages/Item/ItemPage";
+import ItemPage from "./pages/Item/ItemPage";
 
 export const GlobalContext = React.createContext();
 
@@ -59,8 +58,7 @@ function App() {
             />
             <Route path="/emergency-contact" element={<EmerContact />} />
             <Route path="/scanner" element={<ScannerPage />} />
-            {/* DESCOMENTAR Q ES SOLO PARA EL PUSH */}
-            {/* <Route path="/item/:code" element={<ItemPage />} /> */}
+            <Route path="/item/:code" element={<ItemPage />} />
 
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Scanner } from "../../components/Scanner/Scanner";
 import axios from "axios";
-import Header from "../../components/Header/Header";
 import "./ScannerPage.scss";
+import Header from "../../components/Header/Header";
+import { useNavigate } from "react-router-dom";
 const database = "http://localhost:3000/foods/code/";
 //4 res.data is a prop sent to Item page
 export default function ScannerPage() {
   const [scannedCode, setScannedCode] = useState(null);
+  const navigate = useNavigate();
   //2 to compare the barcode, we need to make a petition to the product from the database
   const compareProduct = async (code) => {
     try {
@@ -33,7 +35,7 @@ export default function ScannerPage() {
         <Scanner
           onScan={compareProduct}
           scannedCode={scannedCode}
-
+          navigate={navigate}
           //5 res.data is sent to ItemPage as scannedItem
         />
         <div className="waiting">
