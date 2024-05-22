@@ -12,15 +12,23 @@ import Header from '../../components/Header/Header';
 export default function Profile() {
   const [allergyNames, setAllergyNames] = useState([])
   const path = useLocation().pathname;
-  const user = JSON.parse(localStorage.getItem('userInfo'));
+  let user = JSON.parse(localStorage.getItem('userInfo'));
+  const [editable, setEditable] = useState(false);
+
   // const navigate = useNavigate();
-  useEffect(() => {
+
+  const getDetailAllergens = () => {
+    user = JSON.parse(localStorage.getItem('userInfo'));
+
     for (let index = 0; index < user.allergyId.length; index++) {
       axios.get(`http://localhost:3000/allergens/${user.allergyId[index]}`)
         .then(response => {
-          setAllergyNames([...allergyNames, response.data.data.name]);
+          setAllergyNames((allergyNames) => [...allergyNames, response.data.data.name]);
         })
     }
+  }
+  useEffect(() => {
+    getDetailAllergens()
   }, [])
   useEffect(() => {
     const element = document.getElementById('profile');
@@ -30,12 +38,12 @@ export default function Profile() {
   }, [])
 
   const { lastP, setLastP } = useContext(GlobalContext)
- 
+
   // const path = useLocation().pathname;
 
   //stablish last page viewed
   useEffect(() => {
-  
+
     if (path === '/profile') {
       return () => {
         setLastP(path);
@@ -44,62 +52,61 @@ export default function Profile() {
   }, [])
   //
 
-    useEffect(() => {
-      const element = document.getElementById('profile');
-      if (element && path === '/profile') {
-        element.scrollIntoView();
-      }
-    }, [])
+  useEffect(() => {
+    const element = document.getElementById('profile');
+    if (element && path === '/profile') {
+      element.scrollIntoView();
+    }
+  }, [])
 
-    //nav when scrollX
+  //nav when scrollX
   const [detDX, setDetDX] = useState(0);
 
   useEffect(() => {
     if (path === '/profile') {
       let startX = 0;
-    let currentX = 0;
+      let currentX = 0;
 
-    const handleTouchStart = (event) => {
-      startX = event.touches[0].clientX;
-      // console.log('Touch start:', startX);
-      
-    };
+      const handleTouchStart = (event) => {
+        startX = event.touches[0].clientX;
+        // console.log('Touch start:', startX);
 
-    const handleTouchEnd = (event) => {
-      const viewportWidth = window.innerWidth;
-      const dMin = viewportWidth * 0.6;
-      // console.log('Touch end:', currentX);
+      };
 
-      if ((currentX - startX ) < dMin && currentX != 0) {
-        // console.log(1);
-        document.querySelector(".master").scrollTo({ left: viewportWidth, behavior: 'smooth' });
-        setTimeout(() => {
-          setDetDX(1);
-        }, 300); 
-      } else {
-        setDetDX(0);
-        // console.log(0);
-        // console.log( document.querySelector(".master"));
-        document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
-      }
-    };
+      const handleTouchEnd = (event) => {
+        const viewportWidth = window.innerWidth;
+        const dMin = viewportWidth * 0.6;
+        // console.log('Touch end:', currentX);
 
-    const handleTouchMove = (event) => {
-      currentX = event.touches[0].clientX;
-    };
+        if ((currentX - startX) < dMin && currentX != 0) {
+          // console.log(1);
+          document.querySelector(".master").scrollTo({ left: viewportWidth, behavior: 'smooth' });
+          setTimeout(() => {
+            setDetDX(1);
+          }, 300);
+        } else {
+          setDetDX(0);
+          // console.log(0);
+          // console.log( document.querySelector(".master"));
+          document.querySelector(".master").scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      };
 
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove);
-    window.addEventListener('touchend', handleTouchEnd);
+      const handleTouchMove = (event) => {
+        currentX = event.touches[0].clientX;
+      };
 
-    return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchend', handleTouchEnd);
+
+      return () => {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+      };
     }
   }, []);
-  const [editable, setEditable] = useState(false);
   const handleEditProfileClick = () => {
     setEditable(true);
   };
@@ -107,10 +114,12 @@ export default function Profile() {
 
   return (
     <>
-      {editable && <EditProfile user={user} allergyNames={allergyNames} setEditable={setEditable} />}
+      {editable && <EditProfile user={user} allergyNames={allergyNames} setEditable={setEditable} onEdit={() => {
+        setAllergyNames([]); getDetailAllergens();
+      }} />}
       {!editable &&
         <section className='profile container' id='profile'>
-        <Header/>
+          <Header />
           <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> What's the news?</h2>
           <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
           <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
