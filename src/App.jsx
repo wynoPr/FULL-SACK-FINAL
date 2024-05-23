@@ -36,12 +36,12 @@ function App() {
         <BrowserRouter>
         <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/welcome" element={<OnBoarding/>} />
+            <Route path="/register" element={<Register />} />
             {(!localStorage.getItem('authToken')) ? <Route path="*" element={<Navigate to="/login" />} /> 
             :
             (<>
             <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
-            <Route path="/welcome" element={<OnBoarding/>} />
-            <Route path="/register" element={<Register />} />
             <Route path="/history" element={<div className='master'><History/></div>} />
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
             <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />

@@ -12,7 +12,7 @@ export default function LoginForm() {
             console.log('Intento Login successful:', response.data);
             localStorage.setItem('authToken', response.data.data.token);
             localStorage.setItem('userInfo', JSON.stringify(response.data.data.user));
-            navigate('/home');
+            navigate('/');
             // Puedes almacenar el token de autenticación o redirigir al usuario aquí
         } catch (error) {
             console.error('There was an error logging in!', error);
