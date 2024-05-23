@@ -8,8 +8,8 @@ export default function HistoryCard({ item }) {
   console.log(item);
   return (
     <>
-      {item && <Link to='' className='historyCard link'>
-      <img className='img_s valid' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
+      {item && <Link to={`/item/${item.code}`} className='historyCard link'>
+      <img className='img_s valid' src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt='' />
       <div className='historyCard_info'>
         <h3 className='h3 mg-b-10'>{item.name}</h3>
       </div>

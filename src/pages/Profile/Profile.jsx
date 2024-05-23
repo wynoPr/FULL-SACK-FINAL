@@ -15,7 +15,7 @@ export default function Profile() {
   let user = JSON.parse(localStorage.getItem('userInfo'));
   const [editable, setEditable] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getDetailAllergens = () => {
     user = JSON.parse(localStorage.getItem('userInfo'));
@@ -110,10 +110,7 @@ export default function Profile() {
   const handleEditProfileClick = () => {
     setEditable(true);
   };
-  //logout
-  const logOut = () => {
-    // localStorage.clear()
-  };
+ 
 
 
   return (
@@ -142,7 +139,7 @@ export default function Profile() {
 
           </div>
           <button className='btt_txt h2' onClick={handleEditProfileClick}>Edit your profile</button>
-          <button className='btt_txt h2 danger' onClick={logOut()}>Log Out</button>
+          <button className='btt_txt h2 danger' onClick={() => {localStorage.clear(); navigate('/login')}}>Log Out</button>
         </section>
       }
       {path === '/profile' && <Home />}

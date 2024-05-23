@@ -119,7 +119,7 @@ export default function History() {
         )}
 
 
-        <button className='btt h3 print_info'>Generate Register</button>
+        {/* <button className='btt h3 print_info'>Generate Register</button> */}
       </section>
 
 

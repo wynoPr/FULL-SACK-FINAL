@@ -8,9 +8,9 @@ import axios from "axios";
 export function Scanner({ onScan, scannedCode, navigate }) {
   // const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('userInfo'));
-  // if (scannedCode !== null) {
-  //   navigate(`/item/${scannedCode}`);
-  // }
+  if (scannedCode !== null) {
+    navigate(`/item/${scannedCode}`);
+  }
 
   useEffect(() => {
     const initBarcode = () => {

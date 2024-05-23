@@ -6,8 +6,8 @@ export default function Utilities() {
     <div className='onboard'>
         <h1 className='h1 inicio_head danger'>How can we help</h1>
         <OnBoardingCard
-            img='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg'
-            txt='Scan the article and find out instantly if you can eat it or should avoid it.'
+            img='https://codecheck-app.com/wp-content/uploads/2019/10/Mobile_en_1.png'
+            txt='Scan the item and find out instantly if you can eat it or should avoid it.'
         />
     </div>
   )

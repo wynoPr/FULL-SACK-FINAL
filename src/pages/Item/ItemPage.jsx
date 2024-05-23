@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './ItemPage.scss'
 import { useParams } from "react-router-dom";
 import { Scanner } from "../../components/Scanner/Scanner";
 import Header from "../../components/Header/Header";
+import Allergen_tag from "./Allergen_tag";
 const database = "http://localhost:3000/";
 const _id = "6648c1d5bd29d12e33a68445";
 
@@ -78,40 +80,47 @@ const ItemPage = () => {
   //--------------------------------------------------------------------------------
 
 
+  useEffect(() => {
+    console.log('foodData:');
+    console.log(foodData);
+  
+
+  }, [])
+  
   // Render the food data, with a warning if the user has a matching allergen
   return (
     <>
       <Header />
       {Object.keys(foodData).length > 1 && (
-        <section >
-          <h1 className="h1 ">{foodData.name}</h1>
+        <section className="profile container" >
+          <h1 className="h1 danger profile_head mg-b-20 ">{foodData.name}</h1>
 
           {matchingAllergies.length ?
             <>
-              <p className="h2">
+              <p className="h2 danger it item-desc" >
                 Sorry dear, don´t wanna mess with your beautiful life, right?
                 You are sensitive to: {matchingAllergies.join(', ')}.
               </p>
-              <img src={foodData.image} alt={foodData.name} className="img invalid arreglo" />
+              <img src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt={foodData.name} className="img invalid arreglo" />
 
             </>
             :
             <>
-              <p className="h2">
+              <p className="h2 it item-desc">
                 Go ahead!! Eat it, safe and sound for you honey!
 
               </p>
-              <img src={foodData.image} alt={foodData.name} className="img valid" />
+              <img src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt={foodData.name} className="img valid" />
 
             </>
           }
           <div className="item">
-            <p>{foodData.description}</p>
-            <ul className="container">
+            { foodData.description && <p>{foodData.description}</p>}
+            { foodData.allergId && <ul className="container">
               {foodData.allergId.map((allergen) => (
-                <li key={allergen} className="tag">{allergen.name}</li>
+                <Allergen_tag Aid={allergen}/>
               ))}
-            </ul>
+            </ul>}
           </div>
         </section>
       )}

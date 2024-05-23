@@ -97,7 +97,9 @@ export default function Home() {
         <h2 className="h1 f-w home_title">Click to Start</h2>
         <Link className="btt_scanner" to="/scanner">
           <div className="btt_scanner_img" alt="Hypal logo">
-            Logo
+          <span class="material-symbols-rounded btt_scanner_icon f-w">
+            barcode_scanner
+          </span>
           </div>
           <div className="blob_a"></div>
           <div className="blob_b"></div>

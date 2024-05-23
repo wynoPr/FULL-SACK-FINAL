@@ -55,18 +55,18 @@ export default function EditProfile({ setEditable, onEdit }) {
 
     const handleRemoveAllergen = (indexToRemove) => {
         const updatedAllergens = suggestions.filter((allergen, index) => allergen._id !== indexToRemove);
-        debugger;
+        // debugger;
         setSuggestions(updatedAllergens);
         setValue('allergyId', updatedAllergens);
     };
-
+    
 
 
 
     const saveEdits = async (data) => {
         try {
             console.log(register);
-            debugger
+            // debugger
             const response = await axios.put(`http://localhost:3000/users/${user._id}`, data);
             // localStorage.removeItem('userInfo');
             localStorage.setItem('userInfo', JSON.stringify(response.data.data));
@@ -79,6 +79,9 @@ export default function EditProfile({ setEditable, onEdit }) {
     return (
         <>
             <section className='profile container' id='profile'>
+            <header className='header'>
+                <button onClick={() => {setEditable(false)}} className=''><span className="material-symbols-rounded icon link">close</span></button>
+            </header>
                 <form onSubmit={handleSubmit(saveEdits)}>
                     <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> what's the news?</h2>
                     <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />

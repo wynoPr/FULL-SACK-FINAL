@@ -18,7 +18,7 @@ export default function OnBoarding() {
 
     const onBoard = () => {
         localStorage.setItem('onBoard', 'true');
-        navigate('/')
+        navigate('/login')
     }
 
     const Boarded = localStorage.getItem('onBoard')

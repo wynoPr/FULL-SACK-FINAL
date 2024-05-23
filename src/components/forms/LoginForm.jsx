@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
@@ -18,6 +18,13 @@ export default function LoginForm() {
             console.error('There was an error logging in!', error);
         }
     };
+    const tokencito = localStorage.getItem('authToken')
+    // useEffect(() => {
+    //     if(tokencito){
+    //         navigate('/');}
+    
+    // }, [])
+    
     return (
         <section className='container login'>
             <h2 className='h1 danger form_title'>Welcome Back</h2>
