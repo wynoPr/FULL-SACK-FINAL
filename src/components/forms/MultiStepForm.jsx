@@ -7,6 +7,7 @@ import EmerInfoSec from './EmerInfoSec';
 import AllergenSec from './AllergensSec';
 import RegisterReview from './RegisterReview';
 import { FormProvider, useForm } from 'react-hook-form';
+import Header from '../Header/Header';
 
 export default function MultiStepForm() {
 
@@ -68,6 +69,7 @@ export default function MultiStepForm() {
     };
     return (
         <>
+            <Header/>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} className='container'>
                     {renderStep()}

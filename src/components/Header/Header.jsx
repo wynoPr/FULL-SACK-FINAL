@@ -8,7 +8,6 @@ export default function Header() {
   const { lastP, setLastP } = useContext(GlobalContext);
   const path = useLocation().pathname;
 
-
   return (
     <header className='header'>
         <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
