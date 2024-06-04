@@ -85,14 +85,14 @@ const ItemPage = () => {
     console.log(foodData);
   
 
-  }, [])
+  }, [foodData])
   
   // Render the food data, with a warning if the user has a matching allergen
   return (
     <>
       <Header />
       {Object.keys(foodData).length > 1 && (
-        <section className="profile container" >
+        <section className="profile container itemspage"  >
           <h1 className="h1 danger profile_head mg-b-20 ">{foodData.name}</h1>
 
           {matchingAllergies.length ?
@@ -101,7 +101,8 @@ const ItemPage = () => {
                 Sorry dear, don´t wanna mess with your beautiful life, right?
                 You are sensitive to: {matchingAllergies.join(', ')}.
               </p>
-              <img src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt={foodData.name} className="img invalid arreglo" />
+              <img src={foodData.img} alt={foodData.name} className="img invalid arreglo" />
+              <p className="h3 it faint mg-b-20">{foodData.weight} g</p>
 
             </>
             :
@@ -111,16 +112,26 @@ const ItemPage = () => {
 
               </p>
               <img src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt={foodData.name} className="img valid" />
+              <p className="h3 it faint mg-b-20">{foodData.weight} g</p>
 
             </>
           }
           <div className="item">
-            { foodData.description && <p>{foodData.description}</p>}
-            { foodData.allergId && <ul className="container">
+            { foodData && <><h3 className="h2">Description:</h3><p className="p">{foodData.comments}</p></>}
+            { foodData && <><h3 className="h2">Ingredients:</h3><p className="p">{foodData.ing}</p></>}
+            { foodData && <><h3 className="table h2">Nutritional values (100g):</h3><div className="table">
+            <h3 className="h3 it">Kcal:</h3><p className="p faint">{foodData.kcal}</p>
+            <h3 className="h3 it">Proteins:</h3><p className="p faint">{foodData.proteins}</p>
+            <h3 className="h3 it">Salt:</h3><p className="p faint">{foodData.salt}</p>
+            <h3 className="h3 it">Fats:</h3><p className="p faint">{foodData.fats}</p>
+            <h3 className="h3 it">Saturated Fats:</h3><p className="p faint">{foodData.satFats}</p>
+            <h3 className="h3 it">Sugars:</h3><p className="p faint">{foodData.sugars}</p>
+            </div></>}
+            <ul className="container">
               {foodData.allergId.map((allergen) => (
-                <Allergen_tag Aid={allergen}/>
+                <li key={allergen} className="tag h3">{allergen.name}</li>
               ))}
-            </ul>}
+            </ul>
           </div>
         </section>
       )}
