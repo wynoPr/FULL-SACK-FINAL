@@ -1,0 +1,28 @@
+.historyCard {
+  position: relative;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #F8F8F8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.historyCard_info {
+  width: 40%;
+  margin: 10px 0;
+}
+.historyCard_info_list {
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+}/*# sourceMappingURL=HistoryCard.css.map */

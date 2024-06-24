@@ -1,0 +1,15 @@
+
+
+
+.history{
+    min-width: 100vw;
+    position: relative;
+    &_head{
+        width: 70%;
+    }
+}
+.print_info {
+    position: sticky;
+    bottom: 40px;
+    z-index: 5;
+}

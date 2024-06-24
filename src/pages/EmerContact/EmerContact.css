@@ -1,0 +1,17 @@
+.e-contact {
+  margin-top: 20px;
+}
+.e-contact_info {
+  background-color: #F8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.e-contact_btt {
+  margin: 10px 0;
+}/*# sourceMappingURL=EmerContact.css.map */
