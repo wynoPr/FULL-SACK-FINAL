@@ -106,7 +106,7 @@ export default function History() {
       <section className="history container" id="history">
         <Header />
         <h2 className="h1 danger history_head mg-b-20">
-          Which are your lasts scans?
+          Which are your last scans?
         </h2>
         {/* Cambiar cuando estén las peticiones */}
 
