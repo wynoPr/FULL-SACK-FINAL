@@ -36,7 +36,12 @@ body {
 //Contenedores
 
 body {
-  background-color: #f8f8f8;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2d2a26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root {
@@ -53,6 +58,31 @@ body {
     rgba(255, 235, 208, 1) 80%,
     rgba(255, 235, 208, 1) 100%
   );
+}
+#phoneframe{
+  display: none;
+  position: absolute;
+  aspect-ratio: 0.45;
+  z-index: 5;
+  transform: scale(0.7);
+
+  
+}
+.phoneframe_img{
+  width: 100%;  
+}
+@media (min-width: 480px) {
+  #root{
+    height: auto;
+    width: 412px;
+    aspect-ratio: 0.45;
+    transform: scale(0.7);
+  }
+  #phoneframe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 // para acciones

@@ -28,17 +28,18 @@ function App() {
     console.log(lastP);
   }, [lastP]);
 
-
+  const [token, setToken] = useState(0);
+  
 
   return (
     <>
-      <GlobalContext.Provider value={{ lastP, setLastP }}>
+      <GlobalContext.Provider value={{ lastP, setLastP, setToken }}>
         <BrowserRouter>
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding/>} />
             <Route path="/register" element={<Register />} />
-            {(!localStorage.getItem('authToken')) ? <Route path="*" element={<Navigate to="/login" />} /> 
+            {(!token) ? <Route path="*" element={<Navigate to="/login" />} /> 
             :
             (<>
             <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
