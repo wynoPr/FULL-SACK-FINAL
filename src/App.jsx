@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Estilos from './pages/Styles/Estilos'
+import Estilos from "./pages/Styles/Estilos";
 
-import Home from './pages/Home/Home'
-import Profile from './pages/Profile/Profile'
-import History from './pages/History/History'
-import Register from './pages/register/Register'
-import Login from './pages/login/Login'
-import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-import EditProfile from './components/EditProfile/EditProfile'
-import EmerContact from './pages/EmerContact/EmerContact'
-import Loading from './components/Loading/Loading'
+import Home from "./pages/Home/Home";
+import Profile from "./pages/Profile/Profile";
+import History from "./pages/History/History";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import EditProfile from "./components/EditProfile/EditProfile";
+import EmerContact from "./pages/EmerContact/EmerContact";
+import Loading from "./components/Loading/Loading";
 
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
-import OnBoarding from './pages/OnBoarding/OnBoarding'
+import OnBoarding from "./pages/OnBoarding/OnBoarding";
 
 export const GlobalContext = React.createContext();
+
+const apiUrl = process.env.API_URL;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,17 +30,18 @@ function App() {
     console.log(lastP);
   }, [lastP]);
 
+
   const [token, setToken] = useState(0);
-  
 
   return (
     <>
       <GlobalContext.Provider value={{ lastP, setLastP, setToken }}>
         <BrowserRouter>
-        <Routes>
+          <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/welcome" element={<OnBoarding/>} />
+            <Route path="/welcome" element={<OnBoarding />} />
             <Route path="/register" element={<Register />} />
+
             {(!token) ? <Route path="*" element={<Navigate to="/login" />} /> 
             :
             (<>
@@ -53,6 +56,7 @@ function App() {
             <Route path="/styles" element={<Estilos />} />
             <Route path="*" element={<Navigate to="/" />} />
             </>)}
+
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
