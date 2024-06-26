@@ -1,10 +1,6 @@
-import React from 'react'
-import MultiStepForm from '../../components/forms/MultiStepForm'
+import React from "react";
+import MultiStepForm from "../../components/forms/MultiStepForm";
 
 export default function Register() {
-    return (
-
-        <MultiStepForm />
-
-    )
+  return <MultiStepForm />;
 }
