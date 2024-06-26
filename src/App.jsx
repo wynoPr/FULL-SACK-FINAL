@@ -30,61 +30,33 @@ function App() {
     console.log(lastP);
   }, [lastP]);
 
+
+  const [token, setToken] = useState(0);
+
   return (
     <>
-      <GlobalContext.Provider value={{ lastP, setLastP }}>
+      <GlobalContext.Provider value={{ lastP, setLastP, setToken }}>
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />
             <Route path="/register" element={<Register />} />
-            {!localStorage.getItem("authToken") ? (
-              <Route path="*" element={<Navigate to="/login" />} />
-            ) : (
-              <>
-                <Route
-                  path="/"
-                  element={
-                    <div className="master of-n">
-                      <Loading />
-                      <Home />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/history"
-                  element={
-                    <div className="master">
-                      <History />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/profile"
-                  element={
-                    <div className="master">
-                      <Profile />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/editprofile"
-                  element={
-                    <PrivateRoute>
-                      <div className="master">
-                        <EditProfile />
-                      </div>
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="/emergency-contact" element={<EmerContact />} />
-                <Route path="/scanner" element={<ScannerPage />} />
-                <Route path="/item/:code" element={<ItemPage />} />
 
-                <Route path="/styles" element={<Estilos />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </>
-            )}
+            {(!token) ? <Route path="*" element={<Navigate to="/login" />} /> 
+            :
+            (<>
+            <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
+            <Route path="/history" element={<div className='master'><History/></div>} />
+            <Route path="/profile" element={<div className='master'><Profile /></div>} />
+            <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
+            <Route path="/emergency-contact" element={<EmerContact />} />
+            <Route path="/scanner" element={<ScannerPage />} />
+            <Route path="/item/:code" element={<ItemPage />} />
+
+            <Route path="/styles" element={<Estilos />} />
+            <Route path="*" element={<Navigate to="/" />} />
+            </>)}
+
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
