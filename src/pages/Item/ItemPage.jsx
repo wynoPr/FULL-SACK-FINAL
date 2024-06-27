@@ -90,7 +90,7 @@ const ItemPage = () => {
   // Render the food data, with a warning if the user has a matching allergen
   return (
     <>
-      <Header />
+    <Header/>
       {Object.keys(foodData).length > 1 && (
         <section className="profile container itemspage"  >
           <h1 className="h1 danger profile_head mg-b-20 ">{foodData.name}</h1>
@@ -119,7 +119,7 @@ const ItemPage = () => {
           <div className="item">
             { foodData && <><h3 className="h2">Description:</h3><p className="p">{foodData.comments}</p></>}
             { foodData && <><h3 className="h2">Ingredients:</h3><p className="p">{foodData.ing}</p></>}
-            { foodData && <><h3 className="table h2">Nutritional values (100g):</h3><div className="table">
+            { foodData && <><h3 className="h2" style={{ marginTop: '20px' }}>Nutritional values (100g):</h3><div className="table">
             <h3 className="h3 it">Kcal:</h3><p className="p faint">{foodData.kcal}</p>
             <h3 className="h3 it">Proteins:</h3><p className="p faint">{foodData.proteins}</p>
             <h3 className="h3 it">Salt:</h3><p className="p faint">{foodData.salt}</p>
@@ -127,7 +127,8 @@ const ItemPage = () => {
             <h3 className="h3 it">Saturated Fats:</h3><p className="p faint">{foodData.satFats}</p>
             <h3 className="h3 it">Sugars:</h3><p className="p faint">{foodData.sugars}</p>
             </div></>}
-            <ul className="container">
+            <h3 className="h2" style={{ marginTop: '20px' }}>Allergens:</h3>
+            <ul className="allergen_list">
               {foodData.allergId.map((allergen) => (
                 <li key={allergen} className="tag h3">{allergen.name}</li>
               ))}

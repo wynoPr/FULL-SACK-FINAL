@@ -5,15 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../App';
 
 export default function LoginForm() {
-    
-    const { setToken } = useContext(GlobalContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const onSubmit = async (data) => {
         try {
             const response = await axios.post('http://localhost:3000/auth/login', data);
-            setToken(response.data.data.token)
             console.log('Intento Login successful:', response.data);
             localStorage.setItem('authToken', response.data.data.token);
             localStorage.setItem('userInfo', JSON.stringify(response.data.data.user));

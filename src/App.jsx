@@ -16,10 +16,11 @@ import Loading from "./components/Loading/Loading";
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 import OnBoarding from "./pages/OnBoarding/OnBoarding";
+import Header from "./components/Header/Header";
 
 export const GlobalContext = React.createContext();
 
-const apiUrl = process.env.API_URL;
+// const apiUrl = process.env.API_URL;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,12 +32,28 @@ function App() {
   }, [lastP]);
 
 
-  const [token, setToken] = useState(0);
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'authToken') {
+        setToken(localStorage.getItem('authToken'))
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <>
-      <GlobalContext.Provider value={{ lastP, setLastP, setToken }}>
+    
+      <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
+            <Header />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />
@@ -45,7 +62,7 @@ function App() {
             {(!token) ? <Route path="*" element={<Navigate to="/login" />} /> 
             :
             (<>
-            <Route path="/" element={<div className='master of-n'><Loading/><Home /></div>} />
+            <Route path="/" element={<div className='master of-n'><Home /></div>} />
             <Route path="/history" element={<div className='master'><History/></div>} />
             <Route path="/profile" element={<div className='master'><Profile /></div>} />
             <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
