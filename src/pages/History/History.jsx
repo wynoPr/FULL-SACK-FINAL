@@ -4,8 +4,6 @@ import Home from "../Home/Home";
 import { Navigate, useLocation } from "react-router-dom";
 import HistoryCard from "../../components/HistoryCard/HistoryCard";
 import { GlobalContext } from "../../App";
-import Profile from "../Profile/Profile";
-import Header from "../../components/Header/Header";
 import axios from "axios";
 
 export default function History() {
@@ -102,9 +100,8 @@ export default function History() {
 
   return (
     <>
-      {path === "/history" && <Home />}
+      {/* {path === "/history" && <Home />} */}
       <section className="history container" id="history">
-        <Header />
         <h2 className="h1 danger history_head mg-b-20">
           Which are your last scans?
         </h2>

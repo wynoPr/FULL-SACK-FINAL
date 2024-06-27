@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     max-width: 80%;
-    height: 100vh;
+    height: 100%;
     gap:10px;
     &spage{
         
@@ -19,4 +19,13 @@
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 10px;
     grid-column-gap: 20px;
+    width: 100%;
+}
+
+.allergen_list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
