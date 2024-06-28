@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, useFormContext } from "react-hook-form";
 import axios from "axios";
 import AllergensSec from "../forms/AllergensSec.jsx";
+import { Link } from "react-router-dom";
 
 export default function EditProfile({ setEditable, onEdit }) {
   const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -88,16 +89,14 @@ export default function EditProfile({ setEditable, onEdit }) {
   return (
     <>
       <section className="profile container" id="profile">
-        <header className="header">
-          <button
-            onClick={() => {
+        <header className='header'>
+        <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
+        <a onClick={() => {
               setEditable(false);
             }}
-            className=""
-          >
-            <span className="material-symbols-rounded icon link">close</span>
-          </button>
-        </header>
+            className='btt_txt_smol h3'>&lt; Go Back</a>
+
+      </header>
         <form onSubmit={handleSubmit(saveEdits)} className="container">
           <h2 className="h1 danger profile_head mg-b-20">
             Hello {user.name},<br /> What's the news?

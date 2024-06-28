@@ -3,7 +3,7 @@ import { Scanner } from "../../components/Scanner/Scanner";
 import axios from "axios";
 import "./ScannerPage.scss";
 import Header from "../../components/Header/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const database = "http://localhost:3000/foods/code/";
 //4 res.data is a prop sent to Item page
 export default function ScannerPage() {
@@ -31,7 +31,11 @@ export default function ScannerPage() {
 
     <>
       <section className=" scanner">
-        <Header />
+      <header className='header'  style={{ background: '#fcf5ea00' }}>
+        <Link to='/' className=''><span className="material-symbols-rounded icon danger">close</span></Link>
+        <Link to={'/'} className='btt_txt_smol h3 danger'>&lt; Go Back</Link>
+
+      </header>
         <p className="h1 danger history_head mg-b-20">
           Center the code you want to scan in the box below:
         </p>

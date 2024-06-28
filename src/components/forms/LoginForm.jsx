@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../App';
 
 export default function LoginForm() {
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const onSubmit = async (data) => {
@@ -18,6 +20,8 @@ export default function LoginForm() {
             console.error('There was an error logging in!', error);
         }
     };
+
+
     const tokencito = localStorage.getItem('authToken')
     // useEffect(() => {
     //     if(tokencito){

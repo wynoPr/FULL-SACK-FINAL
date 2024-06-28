@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Profile.scss'
 import Home from '../Home/Home';
-import History from '../History/History';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../App';
 import { isElement } from 'react-dom/test-utils';
 import axios from 'axios';
 import EditProfile from '../../components/EditProfile/EditProfile';
-import Header from '../../components/Header/Header';
 
 export default function Profile() {
   const [allergyNames, setAllergyNames] = useState([])
@@ -120,7 +118,6 @@ export default function Profile() {
       }} />}
       {!editable &&
         <section className='profile container' id='profile'>
-          <Header />
           <h2 className='h1 danger profile_head mg-b-20'>Hello {user.name},<br /> What's the news?</h2>
           <img className='img-r' src='src\assets\powerpuff-girls-heart-8zj177vy22iogq90.jpg' alt='' />
           <h2 className='h2 profile_head mg-b-20'>Profile info:</h2>
@@ -142,7 +139,7 @@ export default function Profile() {
           <button className='btt_txt h2 danger' onClick={() => {localStorage.clear(); navigate('/login')}}>Log Out</button>
         </section>
       }
-      {path === '/profile' && <Home />}
+      {/* {path === '/profile' && <Home />} */}
       {(path == '/profile' && detDX == 1) &&
         // Cambia '/ruta-de-destino' por la URL a la que quieres redirigir al usuario
         <Navigate to="/" />
