@@ -8,14 +8,17 @@ import Profile from "./pages/Profile/Profile";
 import History from "./pages/History/History";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import EditProfile from "./components/EditProfile/EditProfile";
 import EmerContact from "./pages/EmerContact/EmerContact";
-import Loading from "./components/Loading/Loading";
-
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 import OnBoarding from "./pages/OnBoarding/OnBoarding";
+
+
+
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import EditProfile from "./components/EditProfile/EditProfile";
+import Loading from "./components/Loading/Loading";
+
 import Header from "./components/Header/Header";
 
 export const GlobalContext = React.createContext();
@@ -30,7 +33,6 @@ function App() {
   useEffect(() => {
     console.log(lastP);
   }, [lastP]);
-
 
   const [token, setToken] = useState(localStorage.getItem('authToken'));
 
@@ -53,11 +55,13 @@ function App() {
     
       <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
+
             <Header />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />
             <Route path="/register" element={<Register />} />
+
 
             {(!token) ? <Route path="*" element={<Navigate to="/login" />} /> 
             :

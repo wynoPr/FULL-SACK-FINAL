@@ -128,16 +128,18 @@ export default function EditProfile({ setEditable, onEdit }) {
               />
               {/* {errors.mail && <span>{errors.mail.message}</span>} */}
             </label>
+            <br />
             <h3 className="h2">Pal since: </h3>
             <p className="p-b">{user.regDate.substring(0, 10)}</p>
           </div>
+          <br />
           <div className="profile_allergies">
             <p className="h3">
               Marked items will be identified in your searches as hazardous to
               your health.
             </p>
             <input
-              className="input"
+              className="input mg-b-20"
               type="text"
               placeholder="Search for allergens"
               value={query}
@@ -177,38 +179,7 @@ export default function EditProfile({ setEditable, onEdit }) {
               </li>
             ))}
           </div>
-          <div className="profile_emerInfo">
-            <p className="h3">Need to change your emergency contact info?</p>
-            <label>
-              <input
-                className="input"
-                type="text"
-                {...register("name", { required: "Their name is required" })}
-                placeholder={user.emerName}
-              />
-              {/* {errors.name && <span>{errors.name.message}</span>} */}
-            </label>
-            <label>
-              <input
-                className="input"
-                type="email"
-                {...register("mail", { required: "Their email is required" })}
-                placeholder={user.emerEmail}
-              />
-              {/* {errors.mail && <span>{errors.mail.message}</span>} */}
-            </label>
-            <label>
-              <input
-                className="input"
-                type="text"
-                {...register("emerTelf", {
-                  required: "Their telephone is required",
-                })}
-                placeholder={user.emerTelf}
-              />
-              {/* {errors.emerTelf && <span>{errors.emerTelf.message}</span>} */}
-            </label>
-          </div>
+          <br />
 
           <button className="btt_txt h2" type="submit">
             Save
