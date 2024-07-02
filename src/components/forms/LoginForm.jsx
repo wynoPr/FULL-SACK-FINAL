@@ -6,6 +6,8 @@ import { GlobalContext } from '../../App';
 
 export default function LoginForm() {
 
+    const {  refresh, setRefresh } = useContext(GlobalContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const onSubmit = async (data) => {
@@ -13,21 +15,16 @@ export default function LoginForm() {
             const response = await axios.post('http://localhost:3000/auth/login', data);
             console.log('Intento Login successful:', response.data);
             localStorage.setItem('authToken', response.data.data.token);
+            setRefresh( refresh + 1)
             localStorage.setItem('userInfo', JSON.stringify(response.data.data.user));
-            navigate('/');
+            setTimeout(() => {
+                navigate('/')
+            }, 50); 
             // Puedes almacenar el token de autenticación o redirigir al usuario aquí
         } catch (error) {
             console.error('There was an error logging in!', error);
         }
     };
-
-
-    const tokencito = localStorage.getItem('authToken')
-    // useEffect(() => {
-    //     if(tokencito){
-    //         navigate('/');}
-    
-    // }, [])
     
     return (
         <section className='container login'>

@@ -20,6 +20,7 @@ import EditProfile from "./components/EditProfile/EditProfile";
 import Loading from "./components/Loading/Loading";
 
 import Header from "./components/Header/Header";
+import IstTime from "./components/IstTime/IstTime";
 
 export const GlobalContext = React.createContext();
 
@@ -27,6 +28,7 @@ export const GlobalContext = React.createContext();
 
 function App() {
   const [count, setCount] = useState(0);
+  const [refresh, setRefresh] = useState(0);
 
   const [lastP, setLastP] = useState();
 
@@ -35,28 +37,43 @@ function App() {
   }, [lastP]);
 
   const [token, setToken] = useState(localStorage.getItem('authToken'));
+  const [istT, setIstT] = useState(localStorage.getItem('istTime'));
+
+  // useEffect(() => {
+  //   const handleStorageChange = (event) => {
+  //     console.log('Storage event detected:', event);
+  //     if (event.key === 'authToken') {
+  //       setToken(localStorage.getItem('authToken'))
+  //     }else if (event.key === 'istTime') {
+  //       setIstT(localStorage.getItem('istTime'))
+  //     }
+
+  //   };
+  //   window.addEventListener('storage', handleStorageChange);
+  //   console.log('Storage event listener added.');
+
+  //   return () => {
+  //     window.removeEventListener('storage', handleStorageChange);
+  //     console.log('Storage event listener removed.');
+  //   };
+  // }, []);
 
   useEffect(() => {
-    const handleStorageChange = (event) => {
-      if (event.key === 'authToken') {
-        setToken(localStorage.getItem('authToken'))
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+    setToken(localStorage.getItem('authToken'))
+    setIstT(localStorage.getItem('istTime'))
+  
+    
+  }, [refresh])
+  
 
   return (
     <>
     
-      <GlobalContext.Provider value={{ lastP, setLastP }}>
+      <GlobalContext.Provider value={{ lastP, setLastP, refresh, setRefresh }}>
         <BrowserRouter>
 
             <Header />
+            {(!istT) && <IstTime/>}
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />
