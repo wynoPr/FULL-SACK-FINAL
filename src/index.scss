@@ -39,7 +39,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #2d2a26;
+  background-color: #ffebd0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,6 +107,9 @@ body {
 }
 
 @media (min-width: 480px) {
+  body{
+  background-color: #2d2a26;
+  }
   #root{
     height: auto;
     width: 412px;
@@ -389,9 +392,9 @@ body {
 .danger {
   color: #e32b38;
 }
-.danger:hover {
-  color: #ba2022;
-}
+// .danger:hover {
+//   color: #ba2022;
+// }
 .danger:active {
   color: #ba2022;
 }

@@ -1,0 +1,18 @@
+.ist {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: #2d2a269a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    // display: none;
+    &_msgWind{
+        background-color: #ffebd0;
+        width: 80%;
+        padding: 20px;
+        border-radius: 30px;
+    }
+}
