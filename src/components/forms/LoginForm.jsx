@@ -26,9 +26,9 @@ export default function LoginForm() {
     // useEffect(() => {
     //     if(tokencito){
     //         navigate('/');}
-    
+
     // }, [])
-    
+
     return (
         <section className='container login'>
             <h2 className='h1 danger form_title'>Welcome Back</h2>

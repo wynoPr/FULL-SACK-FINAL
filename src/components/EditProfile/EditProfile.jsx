@@ -38,7 +38,6 @@ export default function EditProfile({ setEditable, onEdit }) {
       axios
         .get(`http://localhost:3000/allergens/search/${query}`)
         .then((response) => {
-          debugger;
           setSuggesFiltered(response.data.data);
         })
         .catch((error) => {
@@ -65,7 +64,6 @@ export default function EditProfile({ setEditable, onEdit }) {
     const updatedAllergens = suggestions.filter(
       (allergen, index) => allergen._id !== indexToRemove
     );
-    // debugger;
     setSuggestions(updatedAllergens);
     setValue("allergyId", updatedAllergens);
   };
@@ -73,7 +71,6 @@ export default function EditProfile({ setEditable, onEdit }) {
   const saveEdits = async (data) => {
     try {
       console.log(register);
-      // debugger
       const response = await axios.put(
         `http://localhost:3000/users/${user._id}`,
         data
@@ -90,13 +87,13 @@ export default function EditProfile({ setEditable, onEdit }) {
     <>
       <section className="profile container" id="profile">
         <header className='header'>
-        <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
-        <a onClick={() => {
-              setEditable(false);
-            }}
+          <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
+          <a onClick={() => {
+            setEditable(false);
+          }}
             className='btt_txt_smol h3'>&lt; Go Back</a>
 
-      </header>
+        </header>
         <form onSubmit={handleSubmit(saveEdits)} className="container">
           <h2 className="h1 danger profile_head mg-b-20">
             Hello {user.name},<br /> What's the news?
@@ -121,6 +118,7 @@ export default function EditProfile({ setEditable, onEdit }) {
             {/* <h3 className='h2'>Mail: </h3><p className='p-b'>{user.mail}</p> */}
             <label>
               <input
+                disabled
                 className="input"
                 type="email"
                 {...register("mail", { required: "Email is required" })}
@@ -146,14 +144,13 @@ export default function EditProfile({ setEditable, onEdit }) {
               onChange={handleQueryChange}
             />
 
-            <h2 className="h2 profile_allergies_head mg-b-20">Allergies:</h2>
+
             <ul>
               {suggesFiltered.map((suggestion) => (
                 <li key={suggestion._id}>
-                  <p>hola</p>
                   <span
                     onClick={() => handleSuggestionClick(suggestion)}
-                    className="tag_alt span"
+                    className="tag_alt_danger span"
                   >
                     {" "}
                     {suggestion.name}
@@ -161,6 +158,8 @@ export default function EditProfile({ setEditable, onEdit }) {
                 </li>
               ))}
             </ul>
+
+            <h2 className="h2 profile_allergies_head mg-b-20">Allergies:</h2>
 
             {suggestions.map((allergen, index) => (
               <li key={index}>
