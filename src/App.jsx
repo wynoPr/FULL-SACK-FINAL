@@ -73,7 +73,7 @@ function App() {
         <BrowserRouter>
 
             <Header />
-            {(!istT) && <IstTime/>}
+            {(!istT) && <IstTime type='ist'/>}
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />

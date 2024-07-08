@@ -14,5 +14,16 @@
         width: 80%;
         padding: 20px;
         border-radius: 30px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px
+    }
+    &_close{
+        position: absolute;
+        right: 20px;
+        top: 20px;
     }
 }
