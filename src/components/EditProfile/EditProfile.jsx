@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, useFormContext } from "react-hook-form";
 import axios from "axios";
 import AllergensSec from "../forms/AllergensSec.jsx";
+import { Link } from "react-router-dom";
 
 export default function EditProfile({ setEditable, onEdit }) {
   const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -37,7 +38,6 @@ export default function EditProfile({ setEditable, onEdit }) {
       axios
         .get(`http://localhost:3000/allergens/search/${query}`)
         .then((response) => {
-          debugger;
           setSuggesFiltered(response.data.data);
         })
         .catch((error) => {
@@ -64,7 +64,6 @@ export default function EditProfile({ setEditable, onEdit }) {
     const updatedAllergens = suggestions.filter(
       (allergen, index) => allergen._id !== indexToRemove
     );
-    // debugger;
     setSuggestions(updatedAllergens);
     setValue("allergyId", updatedAllergens);
   };
@@ -72,7 +71,6 @@ export default function EditProfile({ setEditable, onEdit }) {
   const saveEdits = async (data) => {
     try {
       console.log(register);
-      // debugger
       const response = await axios.put(
         `http://localhost:3000/users/${user._id}`,
         data
@@ -88,19 +86,17 @@ export default function EditProfile({ setEditable, onEdit }) {
   return (
     <>
       <section className="profile container" id="profile">
-        <header className="header">
-          <button
-            onClick={() => {
-              setEditable(false);
-            }}
-            className=""
-          >
-            <span className="material-symbols-rounded icon link">close</span>
-          </button>
+        <header className='header'>
+          <Link to='/' className=''><span className="material-symbols-rounded icon link">close</span></Link>
+          <a onClick={() => {
+            setEditable(false);
+          }}
+            className='btt_txt_smol h3'>&lt; Go Back</a>
+
         </header>
         <form onSubmit={handleSubmit(saveEdits)} className="container">
           <h2 className="h1 danger profile_head mg-b-20">
-            Hello {user.name},<br /> what's the news?
+            Hello {user.name},<br /> What's the news?
           </h2>
           <img
             className="img-r"
@@ -122,6 +118,7 @@ export default function EditProfile({ setEditable, onEdit }) {
             {/* <h3 className='h2'>Mail: </h3><p className='p-b'>{user.mail}</p> */}
             <label>
               <input
+                disabled
                 className="input"
                 type="email"
                 {...register("mail", { required: "Email is required" })}
@@ -129,30 +126,31 @@ export default function EditProfile({ setEditable, onEdit }) {
               />
               {/* {errors.mail && <span>{errors.mail.message}</span>} */}
             </label>
+            <br />
             <h3 className="h2">Pal since: </h3>
             <p className="p-b">{user.regDate.substring(0, 10)}</p>
           </div>
+          <br />
           <div className="profile_allergies">
             <p className="h3">
               Marked items will be identified in your searches as hazardous to
               your health.
             </p>
             <input
-              className="input"
+              className="input mg-b-20"
               type="text"
               placeholder="Search for allergens"
               value={query}
               onChange={handleQueryChange}
             />
 
-            <h2 className="h2 profile_allergies_head mg-b-20">Allergies:</h2>
+
             <ul>
               {suggesFiltered.map((suggestion) => (
                 <li key={suggestion._id}>
-                  <p>hola</p>
                   <span
                     onClick={() => handleSuggestionClick(suggestion)}
-                    className="tag_alt span"
+                    className="tag_alt_danger span"
                   >
                     {" "}
                     {suggestion.name}
@@ -160,6 +158,8 @@ export default function EditProfile({ setEditable, onEdit }) {
                 </li>
               ))}
             </ul>
+
+            <h2 className="h2 profile_allergies_head mg-b-20">Allergies:</h2>
 
             {suggestions.map((allergen, index) => (
               <li key={index}>
@@ -178,38 +178,7 @@ export default function EditProfile({ setEditable, onEdit }) {
               </li>
             ))}
           </div>
-          <div className="profile_emerInfo">
-            <p className="h3">Need to change your emergency contact info?</p>
-            <label>
-              <input
-                className="input"
-                type="text"
-                {...register("name", { required: "Their name is required" })}
-                placeholder={user.emerName}
-              />
-              {/* {errors.name && <span>{errors.name.message}</span>} */}
-            </label>
-            <label>
-              <input
-                className="input"
-                type="email"
-                {...register("mail", { required: "Their email is required" })}
-                placeholder={user.emerEmail}
-              />
-              {/* {errors.mail && <span>{errors.mail.message}</span>} */}
-            </label>
-            <label>
-              <input
-                className="input"
-                type="text"
-                {...register("emerTelf", {
-                  required: "Their telephone is required",
-                })}
-                placeholder={user.emerTelf}
-              />
-              {/* {errors.emerTelf && <span>{errors.emerTelf.message}</span>} */}
-            </label>
-          </div>
+          <br />
 
           <button className="btt_txt h2" type="submit">
             Save

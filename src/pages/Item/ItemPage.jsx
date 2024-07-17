@@ -6,10 +6,11 @@ import { Scanner } from "../../components/Scanner/Scanner";
 import Header from "../../components/Header/Header";
 import Allergen_tag from "./Allergen_tag";
 const database = "http://localhost:3000/";
-const _id = "6648c1d5bd29d12e33a68445";
 
 const ItemPage = () => {
   // Define a state variable to store the user's allergens
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
   const [userAllergens, setUserAllergens] = useState([]);
   const { code } = useParams();
   console.log(code);
@@ -17,7 +18,7 @@ const ItemPage = () => {
   // Fetch the user's allergens from the API
   useEffect(() => {
     axios
-      .get(`${database}users/${_id}`)
+      .get(`${database}users/${userInfo._id}`)
       .then((response) => {
         setUserAllergens(response.data.allergens);
       })
@@ -28,9 +29,7 @@ const ItemPage = () => {
 
   // Define a state variable to store the food data
   const [foodData, setFoodData] = useState(false);
-  if (foodData) {
-    console.log(foodData);
-  }
+
 
 
 
@@ -67,8 +66,7 @@ const ItemPage = () => {
   }
 
   // Parse userInfo from localStorage
-  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-  console.log('userInfo:', userInfo);
+  // console.log('userInfo:', userInfo);
 
   let matchingAllergies = [];
   if (userInfo && foodData) {
@@ -83,10 +81,10 @@ const ItemPage = () => {
   useEffect(() => {
     console.log('foodData:');
     console.log(foodData);
-  
+
 
   }, [foodData])
-  
+
   // Render the food data, with a warning if the user has a matching allergen
   return (
     <>
@@ -111,23 +109,24 @@ const ItemPage = () => {
                 Go ahead!! Eat it, safe and sound for you honey!
 
               </p>
-              <img src='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT9NkZqeT3lvHk56k8YbjNvvI39invhmn23rHci3FuUbNDJPDa3tAZrWXLP1JdJJxVy78GwU6kLkoHFlK4hhAQsPbXozZtwmjmf3Eho8K93ey_z6V0KrQ7J' alt={foodData.name} className="img valid" />
+              <img src={foodData.img} alt={foodData.name} className="img valid" />
               <p className="h3 it faint mg-b-20">{foodData.weight} g</p>
 
             </>
           }
           <div className="item">
-            { foodData && <><h3 className="h2">Description:</h3><p className="p">{foodData.comments}</p></>}
-            { foodData && <><h3 className="h2">Ingredients:</h3><p className="p">{foodData.ing}</p></>}
-            { foodData && <><h3 className="table h2">Nutritional values (100g):</h3><div className="table">
-            <h3 className="h3 it">Kcal:</h3><p className="p faint">{foodData.kcal}</p>
-            <h3 className="h3 it">Proteins:</h3><p className="p faint">{foodData.proteins}</p>
-            <h3 className="h3 it">Salt:</h3><p className="p faint">{foodData.salt}</p>
-            <h3 className="h3 it">Fats:</h3><p className="p faint">{foodData.fats}</p>
-            <h3 className="h3 it">Saturated Fats:</h3><p className="p faint">{foodData.satFats}</p>
-            <h3 className="h3 it">Sugars:</h3><p className="p faint">{foodData.sugars}</p>
+            {foodData && <><h3 className="h2">Description:</h3><p className="p">{foodData.comments}</p></>}
+            {foodData && <><h3 className="h2">Ingredients:</h3><p className="p">{foodData.ing}</p></>}
+            {foodData && <><h3 className="h2" style={{ marginTop: '20px' }}>Nutritional values (100g):</h3><div className="table">
+              <h3 className="h3 it">Kcal:</h3><p className="p faint">{foodData.kcal}</p>
+              <h3 className="h3 it">Proteins:</h3><p className="p faint">{foodData.proteins}</p>
+              <h3 className="h3 it">Salt:</h3><p className="p faint">{foodData.salt}</p>
+              <h3 className="h3 it">Fats:</h3><p className="p faint">{foodData.fats}</p>
+              <h3 className="h3 it">Saturated Fats:</h3><p className="p faint">{foodData.satFats}</p>
+              <h3 className="h3 it">Sugars:</h3><p className="p faint">{foodData.sugars}</p>
             </div></>}
-            <ul className="container">
+            <h3 className="h2" style={{ marginTop: '20px' }}>Allergens:</h3>
+            <ul className="allergen_list">
               {foodData.allergId.map((allergen) => (
                 <li key={allergen} className="tag h3">{allergen.name}</li>
               ))}

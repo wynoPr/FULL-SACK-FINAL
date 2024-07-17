@@ -8,18 +8,23 @@ import Profile from "./pages/Profile/Profile";
 import History from "./pages/History/History";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import EditProfile from "./components/EditProfile/EditProfile";
 import EmerContact from "./pages/EmerContact/EmerContact";
-import Loading from "./components/Loading/Loading";
-
 import ScannerPage from "./pages/ScannerPage/ScannerPage";
 import ItemPage from "./pages/Item/ItemPage";
 import OnBoarding from "./pages/OnBoarding/OnBoarding";
 
+
+
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import EditProfile from "./components/EditProfile/EditProfile";
+import Loading from "./components/Loading/Loading";
+
+import Header from "./components/Header/Header";
+import NotFound from "./components/NotFound/NotFound";
+
 export const GlobalContext = React.createContext();
 
-const apiUrl = process.env.API_URL;
+// const apiUrl = process.env.API_URL;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,61 +35,52 @@ function App() {
     console.log(lastP);
   }, [lastP]);
 
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'authToken') {
+        setToken(localStorage.getItem('authToken'))
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return (
     <>
+
       <GlobalContext.Provider value={{ lastP, setLastP }}>
         <BrowserRouter>
+
+          <Header />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OnBoarding />} />
             <Route path="/register" element={<Register />} />
-            {!localStorage.getItem("authToken") ? (
-              <Route path="*" element={<Navigate to="/login" />} />
-            ) : (
-              <>
-                <Route
-                  path="/"
-                  element={
-                    <div className="master of-n">
-                      <Loading />
-                      <Home />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/history"
-                  element={
-                    <div className="master">
-                      <History />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/profile"
-                  element={
-                    <div className="master">
-                      <Profile />
-                    </div>
-                  }
-                />
-                <Route
-                  path="/editprofile"
-                  element={
-                    <PrivateRoute>
-                      <div className="master">
-                        <EditProfile />
-                      </div>
-                    </PrivateRoute>
-                  }
-                />
+
+
+            {(!token) ? <Route path="*" element={<Navigate to="/login" />} />
+              :
+              (<>
+                <Route path="/" element={<div className='master of-n'><Home /></div>} />
+                <Route path="/history" element={<div className='master'><History /></div>} />
+                <Route path="/profile" element={<div className='master'><Profile /></div>} />
+                <Route path="/editprofile" element={<PrivateRoute><div className='master'><EditProfile /></div></PrivateRoute>} />
                 <Route path="/emergency-contact" element={<EmerContact />} />
                 <Route path="/scanner" element={<ScannerPage />} />
                 <Route path="/item/:code" element={<ItemPage />} />
+                <Route path="/notfound" element={<div className="master"><NotFound /></div>} />
+
 
                 <Route path="/styles" element={<Estilos />} />
                 <Route path="*" element={<Navigate to="/" />} />
-              </>
-            )}
+              </>)}
+
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
