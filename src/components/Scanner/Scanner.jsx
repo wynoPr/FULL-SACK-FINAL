@@ -1,13 +1,14 @@
 import Quagga from "quagga";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Scanner.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import NotFound from "./../NotFound/NotFound";
 
-//4last but not least (cuz its the last thing to do): onScan is a prop sent to the father
 export function Scanner({ onScan, scannedCode, navigate }) {
-  // const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('userInfo'));
+  const [codeScanned, setCodeScanned] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+  const user = JSON.parse(localStorage.getItem("userInfo"));
   if (scannedCode !== null) {
     navigate(`/item/${scannedCode}`);
   }
@@ -30,6 +31,7 @@ export function Scanner({ onScan, scannedCode, navigate }) {
               "upc_e_reader",
             ],
           },
+          timeout: 5000, // Set 5000ms timeout
         },
         function (err) {
           if (err) {
@@ -41,26 +43,29 @@ export function Scanner({ onScan, scannedCode, navigate }) {
         }
       );
     };
-    //1 when a barcode is detected, the onScan function is called
     Quagga.onDetected((code) => {
-      //2 onScan is a prop that holds the code of the barcode
-      onScan(code.codeResult.code);
+      setCodeScanned(code.codeResult.code);
       Quagga.stop();
-      localStorage.setItem("lastItem", onScan(code.codeResult.code));
-      const baseUrl = "http://localhost:3000/users/history/"
-      axios.patch(`${baseUrl}${user._id}`, { history: [code.codeResult.code] })
-        .then(response => {
-          console.log(code.codeResult.code)
-          console.log(response)
-          localStorage.removeItem('userInfo');
-          localStorage.setItem('userInfo', JSON.stringify(response.data.data));
-
+      localStorage.setItem("lastItem", code.codeResult.code);
+      const baseUrl = "http://localhost:3000/users/history/";
+      axios
+        .patch(`${baseUrl}${user._id}`, { history: [code.codeResult.code] })
+        .then((response) => {
+          console.log(code.codeResult.code);
+          console.log(response);
+          localStorage.removeItem("userInfo");
+          localStorage.setItem("userInfo", JSON.stringify(response.data.data));
         })
-      // console.log(code);
+        .catch((error) => {
+          setNotFound(true);
+        });
     });
-    //3 initialize the barcode scanner
     initBarcode();
   }, []);
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   return <div className="c-barcode-scanner"></div>;
 }

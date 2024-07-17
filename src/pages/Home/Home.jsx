@@ -91,13 +91,13 @@ export default function Home() {
   //
   return (
     <>
-      {path === "/" && <Profile />}
+      {/* {path === "/" && <Profile />} */}
 
       <section id="home" className="home">
         <h2 className="h1 f-w home_title">Click to Start</h2>
         <Link className="btt_scanner" to="/scanner">
           <div className="btt_scanner_img" alt="Hypal logo">
-          <span class="material-symbols-rounded btt_scanner_icon f-w">
+          <span className="material-symbols-rounded btt_scanner_icon f-w">
             barcode_scanner
           </span>
           </div>
@@ -129,7 +129,7 @@ export default function Home() {
         </nav>
       </section>
 
-      {path === "/" && <History />}
+      {/* {path === "/" && <History />} */}
 
       {/* moves navigations */}
       {path == "/" && detDX == 1 && (

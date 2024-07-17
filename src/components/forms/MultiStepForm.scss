@@ -75,3 +75,16 @@
     flex-direction: column;
     gap: 10px;
  }
+ .alertado {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #9ccda1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+ }

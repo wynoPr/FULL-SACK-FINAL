@@ -52,6 +52,16 @@ export default function MultiStepForm() {
 
     };
 
+    const [showAlert, setShowAlert] = useState(false);
+
+    const alert = () => {
+        setShowAlert(true)
+        console.log('alertado');
+        setTimeout(() => {
+            setShowAlert(false)
+        }, 5000);
+    }
+
 
     const renderStep = () => {
         switch (step) {
@@ -78,12 +88,17 @@ export default function MultiStepForm() {
                         {step < 3 ? (
                             <button type="button" onClick={nextStep} className='btt h3'>Next</button>
                         ) : (
-                            <button type="submit" className='btt h3'>Submit</button>
+                            <button type="submit" className='btt h3' onClick={alert}>Submit</button>
                         )}
                         {step > 0 && <button type="button" onClick={prevStep} className='btt h3'>Back</button>}
                     </div>
                 </form>
             </FormProvider>
+            {showAlert && (
+                <div className="alertado">
+                <p className='h2'>This is a test, currently no new users can be created, please use the test user. </p> <p  className='h2'>Thank you for your understanding.</p>
+                </div>
+            )}
         </>
     )
 }

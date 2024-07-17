@@ -36,12 +36,18 @@ body {
 //Contenedores
 
 body {
-  background-color: #f8f8f8;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffebd0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
   display: flex;
   align-items: center;
@@ -54,11 +60,21 @@ body {
     rgba(255, 235, 208, 1) 100%
   );
 }
+#phoneframe{
+  display: none;
+
+  
+}
+.phoneframe_img{
+  width: 100%;  
+}
 
 // para acciones
 .master {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  
+  padding-top: 40px;
   overflow: scroll;
   display: flex;
   flex-direction: row;
@@ -75,20 +91,49 @@ body {
 
 // @keyframes slideUp {
 //   from {
-//     transform: translateY(100vh);
+//     transform: translateY(100%);
 //   }
 //   to {
 //     transform: translateY(-40px);
 //   }
 // }
-
 .container {
   max-width: 410px;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+@media (min-width: 480px) {
+  body{
+  background-color: #2d2a26;
+  }
+  #root{
+    height: auto;
+    width: 412px;
+    aspect-ratio: 0.45;
+    transform: scale(0.7);
+    border-radius: 20px;
+  }
+  .master {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  #phoneframe{
+    width: 412px;
+    height: 100%;
+    aspect-ratio: 0.45;
+    transform: scale(0.92);
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: -1;
+  }
 }
 
 //inputs
@@ -289,13 +334,13 @@ body {
   }
 }
 .img-r {
-  width: 40vw;
+  width: 40%;
   aspect-ratio: 1/1;
   border-radius: 50%;
   margin: 20px;
   &_s {
     @extend .img;
-    width: 20vw;
+    width: 20%;
     aspect-ratio: 1/1;
     border-radius: 10px;
     margin: 20px;
@@ -347,9 +392,9 @@ body {
 .danger {
   color: #e32b38;
 }
-.danger:hover {
-  color: #ba2022;
-}
+// .danger:hover {
+//   color: #ba2022;
+// }
 .danger:active {
   color: #ba2022;
 }
